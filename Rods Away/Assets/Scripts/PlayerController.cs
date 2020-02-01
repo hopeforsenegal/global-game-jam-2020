@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    protected void Update()
+    protected void FixedUpdate()
     {
         float move = Input.GetAxis("Horizontal") * speed;
 
@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
             meleeCollider.GetComponent<BoxCollider2D>().enabled = true;
             meleeCollider.GetComponent<Renderer>().enabled = true;
         }
-        //Instantiate(projectile, transform.position, transform.rotation);
         
         //Debug.LogFormat("move:{0}", move);
     }
