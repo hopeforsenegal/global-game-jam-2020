@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Action OnDead;
 
     [SerializeField] private LayerMask platformsLayerMask;
+    [SerializeField] private LayerMask wallsLayerMask;
 
     private BoxCollider2D boxCollider;
     private bool attacking = false;
@@ -111,13 +112,32 @@ public class PlayerController : MonoBehaviour
             Debug.LogFormat("Fire2");
             dashTimer = Time.time;
             dashing = true;
+            
             if (direction)
             {
-                transform.position += new Vector3(5.0f, 0.0f, 0.0f);
+                RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.right, 6f, wallsLayerMask);
+                if (raycastHit2d)
+                { 
+                    float dashDistance = raycastHit2d.distance;
+                    transform.position += new Vector3(dashDistance, 0.0f, 0.0f);
+                }
+                else
+                {
+                    transform.position += new Vector3(5.0f, 0.0f, 0.0f);
+                }
             }
             else
             {
-                transform.position += new Vector3(-5.0f, 0.0f, 0.0f);
+                RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.left, 6f, wallsLayerMask);
+                if (raycastHit2d)
+                {
+                    float dashDistance = raycastHit2d.distance;
+                    transform.position += new Vector3(-dashDistance, 0.0f, 0.0f);
+                }
+                else
+                {
+                    transform.position += new Vector3(-5.0f, 0.0f, 0.0f);
+                }
             }
         }
 
@@ -141,9 +161,17 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.min, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformsLayerMask);
+        //Debug.Log(raycastHit2d.collider);
+        return raycastHit2d.collider != null;
+    }
+
+    private bool CanDash()
+    {
+        RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.left, 6f, wallsLayerMask);
         Debug.Log(raycastHit2d.collider);
         return raycastHit2d.collider != null;
     }
+
 
     private void UpdateCheckPoint(Vector3 location)
     {
