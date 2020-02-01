@@ -17,6 +17,7 @@ public class BossController : MonoBehaviour
     #region Events
 
     public Action<AttackPattern> AttackEvent;
+    public Action HurtEvent;
 
     #endregion
 
@@ -30,10 +31,16 @@ public class BossController : MonoBehaviour
     private GameController m_GameController = default;
 
     [SerializeField]
+    private int health = 6;
+
+    [SerializeField]
     private float attackTimer = 3.0f;
 
     [SerializeField]
     private float meleeTimer = 0.5f;
+
+    [SerializeField]
+    private BossHealthCollider m_BossHealthCollider = default;
 
     [SerializeField]
     private EnemyMelee m_EnemyMelee = default;
@@ -47,6 +54,7 @@ public class BossController : MonoBehaviour
 
     private float m_CurrentTimer;
     private Vector3 m_ProjectileStartLocation;
+    private int m_CurrentHealth;
 
     #endregion
 
@@ -54,14 +62,18 @@ public class BossController : MonoBehaviour
 
     protected void Start()
     {
+        Debug.Assert(m_BossHealthCollider != null, "m_BossHealthCollider not set");
         Debug.Assert(m_EnemyMelee != null, "m_EnemyMelee not set");
         Debug.Assert(m_EnemyProjectile != null, "m_EnemyProjectile not set");
 
         m_CurrentTimer = Time.time;
         m_ProjectileStartLocation = m_EnemyProjectile.transform.position;
+        m_CurrentHealth = health;
 
         m_EnemyMelee.Enabled = false;
         m_EnemyProjectile.Enabled = false;
+
+        m_BossHealthCollider.HitEvent += OnHit;
     }
 
     protected void Update()
@@ -109,6 +121,16 @@ public class BossController : MonoBehaviour
         Array values = Enum.GetValues(typeof(AttackPattern));
         System.Random random = new System.Random();
         return (AttackPattern)values.GetValue(random.Next(values.Length));
+    }
+
+    private void OnHit()
+    {
+        m_CurrentHealth--;
+        if (m_CurrentHealth <= 0) {
+            OnDie();
+        } else {
+            HurtEvent?.Invoke();
+        }
     }
 
     private void OnDie()

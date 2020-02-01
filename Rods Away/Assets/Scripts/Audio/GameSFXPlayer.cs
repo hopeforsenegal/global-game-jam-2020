@@ -44,6 +44,7 @@ public class GameSFXPlayer : MonoBehaviour
         m_BossController = FindObjectOfType<BossController>();
         if (m_BossController != null) {
             m_BossController.AttackEvent += OnBossAttack;
+            m_BossController.HurtEvent += OnBossHurt;
         }
     }
 
@@ -51,6 +52,7 @@ public class GameSFXPlayer : MonoBehaviour
     {
         if (m_BossController != null) {
             m_BossController.AttackEvent -= OnBossAttack;
+            m_BossController.HurtEvent -= OnBossHurt;
         }
         if (m_GameController != null) {
             m_GameController.PlayerDefeatedEvent -= OnPlayerDefeatedEvent;
@@ -73,6 +75,11 @@ public class GameSFXPlayer : MonoBehaviour
         } else if(attackPattern == BossController.AttackPattern.Projectile) {
             PlayAudio(settings.bossAttackProjectile);
         }
+    }
+
+    private void OnBossHurt()
+    {
+        PlayAudio(settings.bossHurt);
     }
 
     private void OnBossDefeatedEvent()
