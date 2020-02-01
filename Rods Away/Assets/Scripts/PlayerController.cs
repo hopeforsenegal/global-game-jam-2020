@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool direction = true;
     private bool canDoubleJump;
     private bool unlockDoubleJump = true;
+    private bool unlockDash = true;
     private float attackTimer = 0.0f;
     private float dashTimer = 0.0f;
     private Rigidbody2D rigidbody2d;
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire2") && !dashing && !attacking)
+        if (Input.GetButtonDown("Fire2") && unlockDash && !dashing && !attacking)
         {
             Debug.LogFormat("Fire2");
             dashTimer = Time.time;
@@ -140,7 +141,7 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.min, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformsLayerMask);
-        //Debug.Log(raycastHit2d.collider);
+        Debug.Log(raycastHit2d.collider);
         return raycastHit2d.collider != null;
     }
 
