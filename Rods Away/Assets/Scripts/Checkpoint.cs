@@ -36,6 +36,8 @@ public class Checkpoint : MonoBehaviour
         m_BoxCollider = GetComponent<BoxCollider2D>();
 
         Debug.Assert(m_BoxCollider != null);
+
+        m_BoxCollider.isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
