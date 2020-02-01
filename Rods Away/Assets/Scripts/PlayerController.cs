@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    protected void FixedUpdate()
+    protected void Update()
     {
         float move = Input.GetAxis("Horizontal") * speed;
 
         transform.Translate(Vector3.right * (Time.deltaTime * move), Space.World);
+
+        meleeCollider.GetComponent<BoxCollider2D>().enabled = false;
+        meleeCollider.GetComponent<Renderer>().enabled = false;
 
         if (Input.GetButtonDown("Fire1"))
         {
