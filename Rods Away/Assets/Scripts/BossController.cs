@@ -16,6 +16,8 @@ public class BossController : MonoBehaviour
 
     #region Events
 
+    public Action<AttackPattern> AttackEvent;
+
     #endregion
 
     #region Properties
@@ -99,6 +101,7 @@ public class BossController : MonoBehaviour
             default:
                 break;
         }
+        AttackEvent?.Invoke(attackPattern);
     }
 
     private AttackPattern RandomAttackPattern()

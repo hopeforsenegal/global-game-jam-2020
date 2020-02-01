@@ -25,7 +25,7 @@ public class Settings : ScriptableObject
 
     [Header("Boss SFX")]
     public AudioClip bossAttackMelee;
-    public AudioClip bossAttackRanged;
+    public AudioClip bossAttackProjectile;
     public AudioClip bossHurt;
     public AudioClip bossWins;
     public AudioClip bossLose;
