@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditorInternal;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -6,7 +7,7 @@ public class BossController : MonoBehaviour
 {
     #region Enums and Constants
 
-    public enum Attack
+    public enum AttackPattern
     {
         Melee,
         Projectile
@@ -27,7 +28,10 @@ public class BossController : MonoBehaviour
     #region Inspectables
 
     [SerializeField]
-    private float attackTimer = 2.0f;
+    private float attackTimer = 3.0f;
+
+    [SerializeField]
+    private float meleeTimer = 0.5f;
 
     [SerializeField]
     private EnemyMelee m_EnemyMelee = default;
@@ -40,6 +44,7 @@ public class BossController : MonoBehaviour
     #region Private Member Variables
 
     private float m_CurrentTimer;
+    private Vector3 m_ProjectileStartLocation;
 
     #endregion
 
@@ -51,6 +56,7 @@ public class BossController : MonoBehaviour
         Debug.Assert(m_EnemyProjectile != null, "m_EnemyProjectile not set");
 
         m_CurrentTimer = Time.time;
+        m_ProjectileStartLocation = m_EnemyProjectile.transform.position;
 
         m_EnemyMelee.Enabled = false;
         m_EnemyProjectile.Enabled = false;
@@ -60,9 +66,14 @@ public class BossController : MonoBehaviour
     {
         if (m_CurrentTimer + attackTimer <= Time.time) {
             m_CurrentTimer = Time.time;
-            Debug.LogFormat("Interval");
-            m_EnemyMelee.Enabled = true;
-            m_EnemyProjectile.Enabled = true;
+            Attack();
+            return;
+        }
+
+        if (m_CurrentTimer + meleeTimer <= Time.time && m_EnemyMelee.enabled) {
+            m_CurrentTimer = Time.time;
+            m_EnemyMelee.Enabled = false;
+            return;
         }
     }
 
@@ -73,6 +84,29 @@ public class BossController : MonoBehaviour
     #endregion
 
     #region Private Methods
+
+    private void Attack()
+    {
+        var attackPattern = RandomAttackPattern();
+        Debug.LogFormat("Attacked: {0}", attackPattern);
+        switch (attackPattern) {
+            case AttackPattern.Melee:
+                m_EnemyMelee.Enabled = true;
+                break;
+            case AttackPattern.Projectile:
+                m_EnemyProjectile.Launch(m_ProjectileStartLocation, m_EnemyProjectile.speed, m_EnemyProjectile.moveLeft);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private AttackPattern RandomAttackPattern()
+    {
+        Array values = Enum.GetValues(typeof(AttackPattern));
+        System.Random random = new System.Random();
+        return (AttackPattern)values.GetValue(random.Next(values.Length));
+    }
 
     #endregion
 }

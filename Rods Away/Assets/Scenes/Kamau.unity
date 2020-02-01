@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTimer: 2
+  meleeTimer: 0.5
   m_EnemyMelee: {fileID: 501702234}
   m_EnemyProjectile: {fileID: 932653905}
 --- !u!4 &824427560
@@ -516,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5263acfbd25f043a292e6294d4886798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   moveLeft: 0
   m_Collider: {fileID: 41024772}
   m_Renderer: {fileID: 2009012198}
