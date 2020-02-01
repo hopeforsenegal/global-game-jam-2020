@@ -65,15 +65,22 @@ public class PlayerController : MonoBehaviour
         }
 
         if (move > 0.1f)
-        {
-            //Debug.LogFormat("Right");
-            //meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
-            meleeCollider.transform.localPosition.x = 0.5f;
+        { 
+            if (direction = false)
+            {
+                //Debug.LogFormat("Right");
+                direction = true;
+                meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
+            }
         }
-        else if (move < 0.1f);
+        if (move < 0.1f);
         {
-            //Debug.LogFormat("Left");
-            //meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
+            if (direction = true)
+            {
+                //Debug.LogFormat("Left");
+                direction = false;
+                meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
+            }
         }
 
         Debug.LogFormat("move:{0}", move);
