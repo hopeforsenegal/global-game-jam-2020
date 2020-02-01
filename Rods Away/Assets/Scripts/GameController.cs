@@ -1,19 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerController playerController;
+    public BossController bossController;
+    public EnemyController[] enemyControllers;
+
+    protected void Start()
     {
-        
+        Debug.Assert(playerController != null, "playerController not set");
+        Debug.Assert(bossController != null, "bossController not set");
+        Debug.Assert(enemyControllers != null && enemyControllers.Length > 0, "enemyControllers not set");
+
+        bossController.OnDead += OnDeadBoss;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void OnDestroy()
     {
-        
+        bossController.OnDead -= OnDeadBoss;
+    }
+
+    private void OnDeadBoss()
+    {
+        Debug.LogFormat("You won!");
+        SceneManager.LoadScene("_credits");
     }
 }

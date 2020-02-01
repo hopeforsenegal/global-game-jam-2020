@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BossController : MonoBehaviour
 {
+    public Action OnDead;
+
     private BoxCollider2D boxCollider;
 
     private void Awake()
