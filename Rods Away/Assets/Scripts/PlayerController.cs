@@ -13,13 +13,14 @@ public class PlayerController : MonoBehaviour
     private bool attacking = false;
     private bool direction = true;
     private bool canDoubleJump;
+    private bool unlockDoubleJump = true;
     private float attackTimer = 0.0f;
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
+    private float moveSpeed = 10;
 
 
     public GameObject meleeCollider;
-    public float speed = 5;
 
     private Checkpoint[] checkpoints;
 
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     protected void Update()
     {
-        float move = Input.GetAxis("Horizontal") * speed;
+        float move = Input.GetAxis("Horizontal") * moveSpeed;
 
         transform.Translate(Vector3.right * (Time.deltaTime * move), Space.World);
 
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
                 float jumpVelocity = 30f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
             }
-            else if (canDoubleJump)
+            else if (canDoubleJump && unlockDoubleJump)
             {
                 float jumpVelocity = 30f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
@@ -119,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformsLayerMask);
+        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.min, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformsLayerMask);
         //Debug.Log(raycastHit2d.collider);
         return raycastHit2d.collider != null;
     }
