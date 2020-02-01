@@ -21,11 +21,18 @@ public class PlayerController : MonoBehaviour
 
     public Action OnDead;
 
+    [SerializeField]
+    private float shootTimer = 20.0f;
+
+    [SerializeField]
+    private PlayerProjectile m_PlayerProjectile = default;
+
     [SerializeField] private LayerMask platformsLayerMask;
     [SerializeField] private LayerMask wallsLayerMask;
 
     private bool attacking = false;
     private bool dashing = false;
+    private bool shooting = false;
     private bool direction = true;
     private bool canDoubleJump;
     private bool unlockDoubleJump = true;
@@ -44,6 +51,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Private Member Variables
+
+    private Vector3 m_ProjectileStartLocation;
 
     #endregion
 
@@ -159,6 +168,11 @@ public class PlayerController : MonoBehaviour
                     transform.position += new Vector3(-5.0f, 0.0f, 0.0f);
                 }
             }
+        }
+
+        if(Input.GetButtonDown("Fire3") && !shooting)
+        {
+                m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
         }
 
         if (Input.GetKeyDown(KeyCode.D) && !direction)
