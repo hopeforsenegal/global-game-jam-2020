@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf43b975c5a4784b70392af1ea0b07, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
+  playerWonScreen: {fileID: 0}
+  mainMenu: {fileID: 0}
+  backgroundMusic: {fileID: 0}
+  playerWallBlock: {fileID: 0}
+  playerThroughWall: {fileID: 0}
+  playerAttackMelee: {fileID: 0}
+  playerAttackRanged: {fileID: 0}
+  playerPowerUp: {fileID: 0}
+  playerDash: {fileID: 0}
+  playerJump: {fileID: 0}
+  playerMove: {fileID: 0}
+  enemyAttackMelee: {fileID: 0}
+  enemyAttackRanged: {fileID: 0}
+  bossAttackMelee: {fileID: 0}
+  bossAttackRanged: {fileID: 0}
+  bossHurt: {fileID: 0}
+  bossWins: {fileID: 0}
+  bossLose: {fileID: 0}

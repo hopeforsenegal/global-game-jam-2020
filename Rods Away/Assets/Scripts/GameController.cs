@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region Events
+
+    public Action Initialized;
 
     #endregion
 
@@ -39,6 +42,8 @@ public class GameController : MonoBehaviour
 
         playerController.OnDead += OnDeadPlayer;
         bossController.OnDead += OnDeadBoss;
+
+        Initialized?.Invoke();
     }
 
     protected void OnDestroy()
