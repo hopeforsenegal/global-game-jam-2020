@@ -5,9 +5,31 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public class GameController : MonoBehaviour
 {
+    #region Enums and Constants
+
+    #endregion
+
+    #region Events
+
+    #endregion
+
+    #region Properties
+
+    #endregion
+
+    #region Inspectables
+
     public PlayerController playerController;
     public BossController bossController;
     public EnemyController[] enemyControllers;
+
+    #endregion
+
+    #region Private Member Variables
+
+    #endregion
+
+    #region Monobehaviours
 
     protected void Start()
     {
@@ -30,9 +52,19 @@ public class GameController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
     private void OnDeadBoss()
     {
         Debug.LogFormat("You won!");
         SceneManager.LoadScene("_credits");
     }
+
+    #endregion
 }
