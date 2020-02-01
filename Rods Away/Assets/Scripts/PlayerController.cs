@@ -52,10 +52,11 @@ public class PlayerController : MonoBehaviour
             {
                 meleeCollider.GetComponent<BoxCollider2D>().enabled = false;
                 meleeCollider.GetComponent<Renderer>().enabled = false;
+                attacking = false;
             }
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !attacking)
         {
             Debug.LogFormat("Fire1");
             attackTimer = Time.time;
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             if (direction = true)
             {
-                //Debug.LogFormat("Left");
+                Debug.LogFormat("Left");
                 direction = false;
                 meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
             }
