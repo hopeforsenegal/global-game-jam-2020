@@ -5,12 +5,25 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
+    #region Enums and Constants
+
+    #endregion
+
+    #region Events
+
+    #endregion
+
+    #region Properties
+
+    #endregion
+
+    #region Inspectables
+
     public Action OnDead;
 
     [SerializeField] private LayerMask platformsLayerMask;
     [SerializeField] private LayerMask wallsLayerMask;
 
-    private BoxCollider2D boxCollider;
     private bool attacking = false;
     private bool dashing = false;
     private bool direction = true;
@@ -19,14 +32,23 @@ public class PlayerController : MonoBehaviour
     private bool unlockDash = true;
     private float attackTimer = 0.0f;
     private float dashTimer = 0.0f;
-    private Rigidbody2D rigidbody2d;
-    private BoxCollider2D boxCollider2d;
     private float moveSpeed = 10;
+    private Rigidbody2D rigidbody2d;
+    private BoxCollider2D boxCollider;
+    private BoxCollider2D boxCollider2d;
 
 
     public GameObject meleeCollider;
 
     private Checkpoint[] checkpoints;
+
+    #endregion
+
+    #region Private Member Variables
+
+    #endregion
+
+    #region Monobehaviours
 
     private void Awake()
     {
@@ -157,6 +179,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
 
     private bool IsGrounded()
     {
@@ -177,5 +206,8 @@ public class PlayerController : MonoBehaviour
     {
 
     }
+
+    #endregion
+
 }
         
