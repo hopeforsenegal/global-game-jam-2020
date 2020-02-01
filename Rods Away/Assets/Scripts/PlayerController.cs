@@ -35,8 +35,11 @@ public class PlayerController : MonoBehaviour
     private bool shooting = false;
     private bool direction = true;
     private bool canDoubleJump;
+
     private bool unlockDoubleJump = true;
     private bool unlockDash = true;
+    private bool unlockShooting = true;
+
     private float attackTimer = 0.0f;
     private float dashTimer = 0.0f;
     private float moveSpeed = 10;
@@ -170,7 +173,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("Fire3") && !shooting)
+        if(Input.GetButtonDown("Fire3") && unlockShooting && !shooting)
         {
                 m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
         }
