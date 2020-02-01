@@ -95,26 +95,20 @@ public class PlayerController : MonoBehaviour
             meleeCollider.GetComponent<Renderer>().enabled = true;
         }
 
-        if (move > 0.1f)
-        { 
-            if (direction == false)
-            {
-                //Debug.LogFormat("Right");
-                direction = true;
-                meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
-            }
-        }
-        if (move < 0.1f);
+        if (Input.GetKeyDown(KeyCode.D) && !direction)
         {
-            if (direction == true)
-            {
-                //Debug.LogFormat("Left");
-                direction = false;
-                meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
-            }
+            Debug.Log("D key was pressed.");
+            direction = true;
+            meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
         }
 
-        //Debug.LogFormat("move:{0}", move);
+        if (Input.GetKeyDown(KeyCode.A) && direction)
+        {
+            Debug.Log("A key was pressed.");
+            direction = false;
+            meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
+        }
+
     }
 
 
