@@ -15,7 +15,7 @@ MonoBehaviour:
   gameOver: {fileID: 0}
   playerWonScreen: {fileID: 0}
   mainMenu: {fileID: 0}
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: e986056f914f4974896a49527ca80041, type: 3}
   playerWallBlock: {fileID: 0}
   playerThroughWall: {fileID: 0}
   playerAttackMelee: {fileID: 0}
