@@ -2,10 +2,15 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(BoxCollider2D))]
 public class BossController : MonoBehaviour
 {
     #region Enums and Constants
+
+    public enum Attack
+    {
+        Melee,
+        Projectile
+    }
 
     #endregion
 
@@ -21,19 +26,30 @@ public class BossController : MonoBehaviour
 
     #region Inspectables
 
+    [SerializeField]
+    private float attackTimer = 2.0f;
+
     #endregion
 
     #region Private Member Variables
 
-    private BoxCollider2D m_BoxCollider;
+    private float m_CurrentTimer;
 
     #endregion
 
     #region Monobehaviours
 
-    private void Awake()
+    protected void Start()
     {
-        m_BoxCollider = GetComponent<BoxCollider2D>();
+        m_CurrentTimer = Time.time;
+    }
+
+    protected void Update()
+    {
+        if (m_CurrentTimer + attackTimer <= Time.time) {
+            m_CurrentTimer = Time.time;
+            Debug.LogFormat("Interval");
+        }
     }
 
     #endregion
