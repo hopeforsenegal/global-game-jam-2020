@@ -37,11 +37,13 @@ public class GameController : MonoBehaviour
         Debug.Assert(bossController != null, "bossController not set");
         Debug.Assert(enemyControllers != null && enemyControllers.Length > 0, "enemyControllers not set");
 
+        playerController.OnDead += OnDeadPlayer;
         bossController.OnDead += OnDeadBoss;
     }
 
     protected void OnDestroy()
     {
+        playerController.OnDead -= OnDeadPlayer;
         bossController.OnDead -= OnDeadBoss;
     }
 
@@ -63,6 +65,12 @@ public class GameController : MonoBehaviour
     private void OnDeadBoss()
     {
         Debug.LogFormat("You won!");
+        SceneManager.LoadScene("_credits");
+    }
+
+    private void OnDeadPlayer()
+    {
+        Debug.LogFormat("You died!");
         SceneManager.LoadScene("_credits");
     }
 
