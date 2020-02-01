@@ -23,6 +23,13 @@ public class GameController : MonoBehaviour
         bossController.OnDead -= OnDeadBoss;
     }
 
+    protected void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene("_main_menu");
+        }
+    }
+
     private void OnDeadBoss()
     {
         Debug.LogFormat("You won!");
