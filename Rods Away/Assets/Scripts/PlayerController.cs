@@ -14,10 +14,30 @@ public class PlayerController : MonoBehaviour
     public GameObject meleeCollider;
     public float speed = 5;
 
+    private Checkpoint[] checkpoints;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+    protected void Start()
+    {
+        checkpoints = FindObjectsOfType<Checkpoint>();
+        foreach (var checkpoint in checkpoints) {
+            if (checkpoint != null) {
+                checkpoint.OnSet += UpdateCheckPoint;
+            }
+        }
+    }
+
+    protected void OnDestroy()
+    {
+        foreach (var checkpoint in checkpoints) {
+            if (checkpoint != null) {
+                checkpoint.OnSet -= UpdateCheckPoint;
+            }
+        }
     }
 
     protected void Update()
@@ -54,6 +74,11 @@ public class PlayerController : MonoBehaviour
         }
 
         //Debug.LogFormat("move:{0}", move);
+    }
+
+    private void UpdateCheckPoint(Vector3 location)
+    {
+
     }
 }
         
