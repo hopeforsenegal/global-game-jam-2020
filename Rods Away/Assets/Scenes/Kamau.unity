@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  moveLeft: 1
+  moveLeft: 0
   m_Collider: {fileID: 41024772}
   m_Renderer: {fileID: 2009012198}
 --- !u!1 &1461004885

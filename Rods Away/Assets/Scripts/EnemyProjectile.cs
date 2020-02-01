@@ -55,11 +55,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         var direction = moveLeft ? Vector3.right : Vector3.left;
         transform.Translate(direction * (Time.deltaTime * speed), Space.World);
-    }
-
-    protected void OnBecameInvisible()
-    {
-        Enabled = false;
+        if (!m_Renderer.isVisible) {
+            Enabled = false;
+        }
     }
 
     #endregion
