@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D boxCollider;
     private bool attacking = false;
     private bool direction = true;
+    private bool canDoubleJump;
     private float attackTimer = 0.0f;
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
+
+
     public GameObject meleeCollider;
     public float speed = 5;
 
@@ -52,10 +55,24 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(Vector3.right * (Time.deltaTime * move), Space.World);
 
-        if (IsGrounded() && Input.GetButtonDown("Jump"))
+        if (IsGrounded())
         {
-            float jumpVelocity = 30f;
-            rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            canDoubleJump = true;
+        }
+
+        if ( Input.GetButtonDown("Jump"))
+        {
+            if (IsGrounded())
+            {
+                float jumpVelocity = 30f;
+                rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            }
+            else if (canDoubleJump)
+            {
+                float jumpVelocity = 30f;
+                rigidbody2d.velocity = Vector2.up * jumpVelocity;
+                canDoubleJump = false;
+            }
         }
 
         if (attacking)
