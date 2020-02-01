@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
 
     private BoxCollider2D boxCollider;
     private bool attacking = false;
+    private bool dashing = false;
     private bool direction = true;
     private bool canDoubleJump;
     private bool unlockDoubleJump = true;
     private float attackTimer = 0.0f;
+    private float dashTimer = 0.0f;
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
     private float moveSpeed = 10;
@@ -88,23 +90,46 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !attacking)
         {
-            Debug.LogFormat("Fire1");
+            //Debug.LogFormat("Fire1");
             attackTimer = Time.time;
             attacking = true;
             meleeCollider.GetComponent<BoxCollider2D>().enabled = true;
             meleeCollider.GetComponent<Renderer>().enabled = true;
         }
 
+        if(dashing)
+        {
+            if (Time.time > (dashTimer + 1.0f))
+            {
+                dashing = false;
+            }
+        }
+
+        if (Input.GetButtonDown("Fire2") && !dashing && !attacking)
+        {
+            Debug.LogFormat("Fire2");
+            dashTimer = Time.time;
+            dashing = true;
+            if (direction)
+            {
+                transform.position += new Vector3(5.0f, 0.0f, 0.0f);
+            }
+            else
+            {
+                transform.position += new Vector3(-5.0f, 0.0f, 0.0f);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.D) && !direction)
         {
-            Debug.Log("D key was pressed.");
+            //Debug.Log("D key was pressed.");
             direction = true;
             meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
         }
 
         if (Input.GetKeyDown(KeyCode.A) && direction)
         {
-            Debug.Log("A key was pressed.");
+            //Debug.Log("A key was pressed.");
             direction = false;
             meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
         }
