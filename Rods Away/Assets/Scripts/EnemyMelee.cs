@@ -29,10 +29,10 @@ public class EnemyMelee : MonoBehaviour
     #region Inspectables
 
     [SerializeField]
-    private BoxCollider2D m_Collider;
+    private BoxCollider2D m_Collider = default;
 
     [SerializeField]
-    private Renderer m_Renderer;
+    private Renderer m_Renderer = default;
 
     #endregion
 

@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+[DisallowMultipleComponent]
 public class GameMusicPlayer : MonoBehaviour
 {
 	#region Enums and Constants

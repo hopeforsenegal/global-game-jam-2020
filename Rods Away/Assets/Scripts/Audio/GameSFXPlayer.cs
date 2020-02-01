@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class GameSFXPlayer : MonoBehaviour
 {
     #region Enums and Constants

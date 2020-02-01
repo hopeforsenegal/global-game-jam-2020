@@ -25,7 +25,7 @@ public class BossController : MonoBehaviour
     #region Inspectables
 
     [SerializeField]
-    private GameController m_GameController;
+    private GameController m_GameController = default;
 
     [SerializeField]
     private float attackTimer = 3.0f;
