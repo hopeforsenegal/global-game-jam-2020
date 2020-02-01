@@ -24,6 +24,8 @@ public class GameSFXPlayer : MonoBehaviour
     #region Private Member Variables
 
     private BossController m_BossController;
+    private GameController m_GameController;
+    private PlayerController m_PlayerController;
 
     #endregion
 
@@ -33,16 +35,18 @@ public class GameSFXPlayer : MonoBehaviour
     {
         Debug.Assert(settings != null, "settings not set");
 
-        m_BossController = FindObjectOfType<BossController>();
-        if (m_BossController != null) {
-            m_BossController.OnDead += OnBossDead;
+        m_GameController = FindObjectOfType<GameController>();
+        if (m_GameController != null) {
+            m_GameController.PlayerDefeatedEvent += OnPlayerDefeatedEvent;
+            m_GameController.BossDefeatedEvent += OnBossDefeatedEvent;
         }
     }
 
     protected void OnDestroy()
     {
-        if (m_BossController != null) {
-            m_BossController.OnDead -= OnBossDead;
+        if (m_GameController != null) {
+            m_GameController.PlayerDefeatedEvent -= OnPlayerDefeatedEvent;
+            m_GameController.BossDefeatedEvent -= OnBossDefeatedEvent;
         }
     }
 
@@ -54,9 +58,14 @@ public class GameSFXPlayer : MonoBehaviour
 
     #region Private Methods
 
-    private void OnBossDead()
+    private void OnBossDefeatedEvent()
     {
         PlayAudio(settings.bossLose);
+    }
+
+    private void OnPlayerDefeatedEvent()
+    {
+        PlayAudio(settings.bossWins);
     }
 
     private void PlayAudio(AudioClip audioClip)

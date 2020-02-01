@@ -34,7 +34,7 @@ public class GameMusicPlayer : MonoBehaviour
     {
 		var gameController = FindObjectOfType<GameController>();
         if(gameController != null) {
-			gameController.Initialized += OnGameInitialized;
+			gameController.InitializedEvent += OnGameInitialized;
 		}
     }
 

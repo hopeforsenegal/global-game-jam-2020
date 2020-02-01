@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditorInternal;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -17,8 +16,6 @@ public class BossController : MonoBehaviour
 
     #region Events
 
-    public Action OnDead;
-
     #endregion
 
     #region Properties
@@ -26,6 +23,9 @@ public class BossController : MonoBehaviour
     #endregion
 
     #region Inspectables
+
+    [SerializeField]
+    private GameController m_GameController;
 
     [SerializeField]
     private float attackTimer = 3.0f;
@@ -106,6 +106,11 @@ public class BossController : MonoBehaviour
         Array values = Enum.GetValues(typeof(AttackPattern));
         System.Random random = new System.Random();
         return (AttackPattern)values.GetValue(random.Next(values.Length));
+    }
+
+    private void OnDie()
+    {
+        m_GameController.NotifyBossWasDefeated();
     }
 
     #endregion

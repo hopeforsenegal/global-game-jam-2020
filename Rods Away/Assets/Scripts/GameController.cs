@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,10 @@ public class GameController : MonoBehaviour
 
     #region Events
 
-    public Action Initialized;
+    public Action InitializedEvent;
+    public Action PlayerDefeatedEvent;
+    public Action BossDefeatedEvent;
+    public Action QuitEvent;
 
     #endregion
 
@@ -40,22 +44,13 @@ public class GameController : MonoBehaviour
         Debug.Assert(bossController != null, "bossController not set");
         Debug.Assert(enemyControllers != null && enemyControllers.Length > 0, "enemyControllers not set");
 
-        playerController.OnDead += OnDeadPlayer;
-        bossController.OnDead += OnDeadBoss;
-
-        Initialized?.Invoke();
-    }
-
-    protected void OnDestroy()
-    {
-        playerController.OnDead -= OnDeadPlayer;
-        bossController.OnDead -= OnDeadBoss;
+        InitializedEvent?.Invoke();
     }
 
     protected void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            SceneManager.LoadScene("_main_menu");
+            QuitGame();
         }
     }
 
@@ -63,20 +58,33 @@ public class GameController : MonoBehaviour
 
     #region Public Methods
 
+    public void NotifyPlayerWasDefeated()
+    {
+        Debug.LogFormat("You died!");
+        PlayerDefeatedEvent?.Invoke();
+    }
+
+    public void NotifyBossWasDefeated()
+    {
+        Debug.LogFormat("You won!");
+        BossDefeatedEvent?.Invoke();
+        StartCoroutine(LoadSceneDelayed(5, "_credits"));
+    }
+
     #endregion
 
     #region Private Methods
 
-    private void OnDeadBoss()
+    private void QuitGame()
     {
-        Debug.LogFormat("You won!");
-        SceneManager.LoadScene("_credits");
+        QuitEvent?.Invoke();
+        SceneManager.LoadScene("_main_menu");
     }
 
-    private void OnDeadPlayer()
+    private IEnumerator LoadSceneDelayed(int delayed, string scenename)
     {
-        Debug.LogFormat("You died!");
-        SceneManager.LoadScene("_credits");
+        yield return new WaitForSeconds(delayed);
+        SceneManager.LoadScene(scenename);
     }
 
     #endregion
