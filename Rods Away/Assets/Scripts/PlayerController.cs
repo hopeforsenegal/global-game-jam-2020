@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
         if (attacking)
         {
-            if (Time.time > (attackTimer + 0.5f))
+            if (Time.time > (attackTimer + 0.3f))
             {
                 meleeCollider.GetComponent<BoxCollider2D>().enabled = false;
                 meleeCollider.GetComponent<Renderer>().enabled = false;
@@ -64,16 +64,19 @@ public class PlayerController : MonoBehaviour
             meleeCollider.GetComponent<Renderer>().enabled = true;
         }
 
-        if (move > 0.0f)
+        if (move > 0.1f)
         {
-            Debug.LogFormat("Right");
+            //Debug.LogFormat("Right");
+            //meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
+            meleeCollider.transform.localPosition.x = 0.5f;
         }
-        else if (move < 0.0f)
+        else if (move < 0.1f);
         {
-            Debug.LogFormat("Left");
+            //Debug.LogFormat("Left");
+            //meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
         }
 
-        //Debug.LogFormat("move:{0}", move);
+        Debug.LogFormat("move:{0}", move);
     }
 
     private void UpdateCheckPoint(Vector3 location)
