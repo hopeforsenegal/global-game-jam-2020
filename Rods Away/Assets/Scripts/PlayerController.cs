@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
     private float dashTimer = 0.0f;
     private float moveSpeed = 10;
     private Rigidbody2D rigidbody2d;
-    private BoxCollider2D boxCollider;
     private BoxCollider2D boxCollider2d;
 
 
@@ -52,7 +51,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
     }
@@ -193,14 +191,6 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(raycastHit2d.collider);
         return raycastHit2d.collider != null;
     }
-
-    private bool CanDash()
-    {
-        RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.left, 6f, wallsLayerMask);
-        Debug.Log(raycastHit2d.collider);
-        return raycastHit2d.collider != null;
-    }
-
 
     private void UpdateCheckPoint(Vector3 location)
     {
