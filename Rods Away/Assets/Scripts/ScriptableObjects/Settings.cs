@@ -5,10 +5,9 @@ using UnityEngine;
 public class Settings : ScriptableObject
 {
     [Header("Music")]
-    public AudioClip gameOver;
-    public AudioClip playerWonScreen;
-    public AudioClip mainMenu;
-    public AudioClip backgroundMusic;
+    public AudioClip playerWonScreenMusicTrack;
+    public AudioClip mainMenuMusicTrack;
+    public AudioClip backgroundMusicTrack;
 
     [Header("Player SFX")]
     public AudioClip playerWallBlock;

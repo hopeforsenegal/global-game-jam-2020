@@ -35,6 +35,7 @@ public class GameMusicPlayer : MonoBehaviour
 		var gameController = FindObjectOfType<GameController>();
         if(gameController != null) {
 			gameController.InitializedEvent += OnGameInitialized;
+			gameController.BossDefeatedEvent += OnGameOver;
 		}
     }
 
@@ -49,8 +50,13 @@ public class GameMusicPlayer : MonoBehaviour
     private void OnGameInitialized()
     {
 		Debug.LogFormat("OnGameInitialized");
-		PlayAudio(settings.backgroundMusic);
+		PlayAudio(settings.backgroundMusicTrack);
     }
+
+    private void OnGameOver()
+	{
+		PlayAudio(settings.playerWonScreenMusicTrack);
+	}
 
 	private void PlayAudio(AudioClip audioClip)
 	{
