@@ -29,6 +29,12 @@ public class BossController : MonoBehaviour
     [SerializeField]
     private float attackTimer = 2.0f;
 
+    [SerializeField]
+    private EnemyMelee m_EnemyMelee = default;
+
+    [SerializeField]
+    private EnemyProjectile m_EnemyProjectile = default;
+
     #endregion
 
     #region Private Member Variables
@@ -41,7 +47,13 @@ public class BossController : MonoBehaviour
 
     protected void Start()
     {
+        Debug.Assert(m_EnemyMelee != null, "m_EnemyMelee not set");
+        Debug.Assert(m_EnemyProjectile != null, "m_EnemyProjectile not set");
+
         m_CurrentTimer = Time.time;
+
+        m_EnemyMelee.Enabled = false;
+        m_EnemyProjectile.Enabled = false;
     }
 
     protected void Update()
@@ -49,6 +61,8 @@ public class BossController : MonoBehaviour
         if (m_CurrentTimer + attackTimer <= Time.time) {
             m_CurrentTimer = Time.time;
             Debug.LogFormat("Interval");
+            m_EnemyMelee.Enabled = true;
+            m_EnemyProjectile.Enabled = true;
         }
     }
 
