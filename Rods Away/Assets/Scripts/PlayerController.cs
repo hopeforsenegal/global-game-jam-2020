@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private BoxCollider2D boxCollider;
     private bool attacking = false;
+    private bool direction = true;
     private float attackTimer = 0.0f;
     public GameObject meleeCollider;
     public float speed = 5;
@@ -42,7 +43,16 @@ public class PlayerController : MonoBehaviour
             meleeCollider.GetComponent<BoxCollider2D>().enabled = true;
             meleeCollider.GetComponent<Renderer>().enabled = true;
         }
-        
+
+        if (move > 0.0f)
+        {
+            Debug.LogFormat("Right");
+        }
+        else if (move < 0.0f)
+        {
+            Debug.LogFormat("Left");
+        }
+
         //Debug.LogFormat("move:{0}", move);
     }
 }
