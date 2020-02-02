@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
 
     private float m_CurrentTimer;
     private Vector3 m_ProjectileStartLocation;
-    private bool isDead;
+    public bool isDead;
 
     #endregion
 

@@ -47,7 +47,15 @@ public class PlayerHealthCollider : MonoBehaviour
             //Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy projectile");
             PlayerHitEvent?.Invoke();
         } else if (other.gameObject.CompareTag("Enemy")) {
-            //Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy");
+            Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy");
+            var enemy = other.gameObject.GetComponentInParent<EnemyController>();
+            Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy:{0}", enemy);
+            if (enemy != null) {
+                if (enemy.isDead) {
+                    // don;t die from dead enemies
+                    return;
+                }
+            }
             PlayerHitEvent?.Invoke();
         }
     }
