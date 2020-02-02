@@ -50,7 +50,7 @@ public class PlayerProjectileCollider : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Wall")) {
+        if (collision.collider.CompareTag("EnemyWall")) {
             Debug.LogFormat("PlayerProjectileCollider OnCollisionEnter2D wall");
             HitWallEvent?.Invoke();
         }
