@@ -1858,6 +1858,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da88d2cf7fd424668a95c9a5d7783eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockDoubleJump: 1
+  unlockDash: 1
+  unlockShooting: 1
+  jumpVelocity: 30
   shootTimer: 3
   m_PlayerProjectile: {fileID: 339561463}
   m_PlayerHealthCollider: {fileID: 1188439821}

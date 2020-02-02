@@ -134,6 +134,10 @@ public class BossController : MonoBehaviour
             HurtEvent?.Invoke();
             Debug.Log("HurtEvent");
             Health health = m_Health.GetComponent<Health>();
+            if (m_CurrentHealth == 100)
+            {
+                health.Viewable(true);
+            }
             health.health = m_CurrentHealth;
         }
     }

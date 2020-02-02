@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine .UI;
 
@@ -18,6 +19,11 @@ public class Health : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        //gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -32,4 +38,11 @@ public class Health : MonoBehaviour
         }
 
     }
+
+    public void Viewable(bool v)
+    {
+        gameObject.SetActive(v);
+        Debug.Log("fuck");
+    }
+
 }
