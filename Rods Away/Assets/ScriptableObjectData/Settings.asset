@@ -14,17 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWonScreenMusicTrack: {fileID: 0}
   mainMenuMusicTrack: {fileID: 0}
-  backgroundMusicTrack: {fileID: 8300000, guid: a3fddaa021bca41dfab25555824b68c7,
+  backgroundMusicTrack: {fileID: 8300000, guid: 3b5ddbc0150d14ce2933f28c12c98108,
     type: 3}
   playerWallBlock: {fileID: 8300000, guid: 532e417ffa3f95747908419a00be3780, type: 3}
   playerThroughWall: {fileID: 0}
-  playerAttackMelee: {fileID: 0}
-  playerAttackProjectile: {fileID: 0}
+  playerAttackMelee: {fileID: 8300000, guid: 00a8808ba5f774cdc96ca7ae0bdfacbf, type: 3}
+  playerAttackProjectile: {fileID: 8300000, guid: 1620413723ac548a79c30fee6740217d,
+    type: 3}
   playerPowerUp: {fileID: 0}
-  playerDash: {fileID: 0}
-  playerJump: {fileID: 8300000, guid: 90505d002e4d047129e09bd1c2f3a4b7, type: 3}
-  playerMove: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
-  playerDefeated: {fileID: 0}
+  playerDash: {fileID: 8300000, guid: 3656a2d9cabac43a588ecec57cbc37f8, type: 3}
+  playerJump: {fileID: 8300000, guid: de77acc6fe4714cd9a5e67624992d380, type: 3}
+  playerMove: {fileID: 8300000, guid: 833561e30408e45ffa51fa7b4ee3c0f1, type: 3}
+  playerDie: {fileID: 8300000, guid: f5a65dc30f47d494ca305a03563684c7, type: 3}
+  playerRespawn: {fileID: 0}
   enemyAttackMelee: {fileID: 0}
   enemyAttackProjectile: {fileID: 0}
   enemyHurt: {fileID: 0}
