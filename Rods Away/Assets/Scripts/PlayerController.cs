@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public Action DieEvent;
     public Action RespawnEvent;
 
-    public Action PowerUpEvent;
+    public Action<Vector3> PowerUpEvent;
     public Action DashEvent;
     public Action JumpEvent;
 
@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour
         DieEvent?.Invoke();
     }
 
-    private void OnPowerUpHit(PowerUpPiece.Ability ability)
+    private void OnPowerUpHit(Vector3 location, PowerUpPiece.Ability ability)
     {
         Debug.LogFormat("OnPowerUpHit:{0}", ability);
         if (ability == PowerUpPiece.Ability.DoubleJump) {
@@ -257,7 +257,7 @@ public class PlayerController : MonoBehaviour
             if (m_DoubleJumpCount == 4) {
                 unlockDoubleJump = true;
                 Debug.LogFormat("You can now double jump");
-                PowerUpEvent?.Invoke();
+                PowerUpEvent?.Invoke(location);
             }
         }
     }

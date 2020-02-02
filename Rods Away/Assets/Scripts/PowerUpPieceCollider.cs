@@ -12,7 +12,7 @@ public class PowerUpPieceCollider : MonoBehaviour
 
     #region Events
 
-    public Action PowerUpHitEvent;
+    public Action<Vector3> PowerUpHitEvent;
 
     #endregion
 
@@ -46,6 +46,8 @@ public class PowerUpPieceCollider : MonoBehaviour
         m_BoxCollider = GetComponent<BoxCollider2D>();
 
         Debug.Assert(m_BoxCollider != null);
+
+        m_BoxCollider.isTrigger = true;
     }
 
     protected void OnTriggerEnter2D(Collider2D other)
@@ -54,7 +56,7 @@ public class PowerUpPieceCollider : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player")) {
             Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D player");
-            PowerUpHitEvent?.Invoke();
+            PowerUpHitEvent?.Invoke(transform.position);
         }
     }
 

@@ -16,7 +16,7 @@ public class PowerUpPiece : MonoBehaviour
 
     #region Events
 
-    public Action<Ability> PowerUpHitEvent;
+    public Action<Vector3, Ability> PowerUpHitEvent;
 
     #endregion
 
@@ -74,11 +74,11 @@ public class PowerUpPiece : MonoBehaviour
 
     #region Private Methods
 
-    private void OnPowerUpHit()
+    private void OnPowerUpHit(Vector3 location)
     {
         Debug.LogFormat("PowerUpPiece OnPowerUpHit player");
         Enabled = false;
-        PowerUpHitEvent?.Invoke(m_Ability);
+        PowerUpHitEvent?.Invoke(location, m_Ability);
     }
 
     #endregion

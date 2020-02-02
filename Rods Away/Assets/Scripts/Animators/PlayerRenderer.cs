@@ -132,7 +132,7 @@ public class PlayerRenderer : MonoBehaviour
         m_CurrentTimer = Time.time;
     }
 
-    private void OnPowerUp()
+    private void OnPowerUp(Vector3 location)
     {
     }
 

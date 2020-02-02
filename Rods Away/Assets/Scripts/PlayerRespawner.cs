@@ -29,7 +29,6 @@ public class PlayerRespawner : MonoBehaviour
 
     private PlayerController m_PlayerController;
     private Vector3 m_LastSpawnLocation;
-    private CheckpointCollider[] m_Checkpoints;
 
     #endregion
 
@@ -47,24 +46,14 @@ public class PlayerRespawner : MonoBehaviour
         Debug.Assert(m_GameController != null, "m_GameController not set");
 
         m_LastSpawnLocation = m_PlayerController.transform.position;
-        m_Checkpoints = FindObjectsOfType<CheckpointCollider>();
-
-        foreach (var checkpoint in m_Checkpoints) {
-            if (checkpoint != null) {
-                checkpoint.OnSet += UpdateCheckPoint;
-            }
-        }
+        m_PlayerController.PowerUpEvent += UpdateCheckPoint;
         m_GameController.PlayerDefeatedEvent += OnPlayerDefeated;
     }
 
     protected void OnDestroy()
     {
         m_GameController.PlayerDefeatedEvent -= OnPlayerDefeated;
-        foreach (var checkpoint in m_Checkpoints) {
-            if (checkpoint != null) {
-                checkpoint.OnSet -= UpdateCheckPoint;
-            }
-        }
+        m_PlayerController.PowerUpEvent -= UpdateCheckPoint;
     }
 
     protected void Update()
