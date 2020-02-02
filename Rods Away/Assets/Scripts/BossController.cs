@@ -18,6 +18,7 @@ public class BossController : MonoBehaviour
 
     public Action<AttackPattern> AttackEvent;
     public Action HurtEvent;
+    public Action DieEvent;
 
     #endregion
 
@@ -26,9 +27,6 @@ public class BossController : MonoBehaviour
     #endregion
 
     #region Inspectables
-
-    [SerializeField]
-    private GameController m_GameController = default;
 
     [SerializeField]
     private int health = 6;
@@ -125,17 +123,13 @@ public class BossController : MonoBehaviour
 
     private void OnHit()
     {
+        Debug.LogFormat("Boss Was hit");
         m_CurrentHealth--;
         if (m_CurrentHealth <= 0) {
-            OnDie();
+            DieEvent?.Invoke();
         } else {
             HurtEvent?.Invoke();
         }
-    }
-
-    private void OnDie()
-    {
-        m_GameController.NotifyBossWasDefeated();
     }
 
     #endregion

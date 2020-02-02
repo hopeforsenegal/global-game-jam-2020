@@ -366,11 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d42e15f1ca2d49739237e7c42da04bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameController: {fileID: 0}
   health: 6
   attackTimer: 2
   meleeTimer: 0.5
-  m_BossHealthCollider: {fileID: 0}
+  m_BossHealthCollider: {fileID: 216007535}
   m_EnemyMelee: {fileID: 367107888}
   m_EnemyProjectile: {fileID: 1883464399}
 --- !u!4 &196736450
@@ -509,6 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216007533}
   - component: {fileID: 216007534}
+  - component: {fileID: 216007535}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Enemy
@@ -556,6 +556,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.376402, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &216007535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216007532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4aa2faf2fdce47b3bc190c6a53ff1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &316393954
 GameObject:
   m_ObjectHideFlags: 0
