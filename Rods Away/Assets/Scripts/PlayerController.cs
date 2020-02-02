@@ -34,6 +34,15 @@ public class PlayerController : MonoBehaviour
     #region Inspectables
 
     [SerializeField]
+    private bool unlockDoubleJump = true;
+    [SerializeField]
+    private bool unlockDash = true;
+    [SerializeField]
+    private bool unlockShooting = true;
+
+
+
+    [SerializeField]
     float jumpVelocity = 30f;
 
     [SerializeField]
@@ -54,10 +63,6 @@ public class PlayerController : MonoBehaviour
     public bool direction = true;
     private bool canDoubleJump;
     public bool isMoving;
-
-    private bool unlockDoubleJump = true;
-    private bool unlockDash = true;
-    private bool unlockShooting = true;
 
     private float attackTimer = 0.0f;
     private float dashTimer = 0.0f;
