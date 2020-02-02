@@ -74,6 +74,8 @@ public class BossController : MonoBehaviour
         m_EnemyMelee.Enabled = false;
         m_EnemyProjectile.Enabled = false;
 
+        m_Health.Viewable(false);
+
         m_BossHealthCollider.HitEvent += OnHit;
     }
 
@@ -126,19 +128,15 @@ public class BossController : MonoBehaviour
 
     private void OnHit()
     {
-        //Debug.LogFormat("Boss Was hit when health was {0}", m_CurrentHealth);
+        Debug.LogFormat("Boss Was hit when health was {0}", m_CurrentHealth);
         m_CurrentHealth -= 10;
         if (m_CurrentHealth <= 0) {
+            m_Health.Viewable(false);
             DieEvent?.Invoke();
         } else {
+            m_Health.Viewable(true);
+            m_Health.health = m_CurrentHealth;
             HurtEvent?.Invoke();
-            Debug.Log("HurtEvent");
-            Health health = m_Health.GetComponent<Health>();
-            if (m_CurrentHealth == 100)
-            {
-                health.Viewable(true);
-            }
-            health.health = m_CurrentHealth;
         }
     }
 
