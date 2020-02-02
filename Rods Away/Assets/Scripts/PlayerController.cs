@@ -18,8 +18,13 @@ public class PlayerController : MonoBehaviour
     #region Events
 
     public Action<AttackPattern> AttackEvent;
-    public Action HurtEvent;
     public Action DieEvent;
+
+    public Action PowerUpEvent;
+    public Action DashEvent;
+    public Action JumpEvent;
+    public Action IdleEvent;
+    public Action MoveEvent;
 
     #endregion
 
@@ -201,6 +206,9 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("D key was pressed.");
             direction = true;
             meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
+
+            MoveEvent?.Invoke();
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.A) && direction)
@@ -208,8 +216,10 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("A key was pressed.");
             direction = false;
             meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
-        }
 
+            MoveEvent?.Invoke();
+            return;
+        }
     }
 
     #endregion
