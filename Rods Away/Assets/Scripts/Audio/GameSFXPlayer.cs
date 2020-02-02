@@ -57,6 +57,13 @@ public class GameSFXPlayer : MonoBehaviour
                 }
             }
         }
+        m_PlayerController = FindObjectOfType<PlayerController>();
+        if (m_PlayerController != null) {
+            m_PlayerController.AttackEvent += OnPlayerAttack;
+            m_PlayerController.PowerUpEvent += OnPlayerPowerUp;
+            m_PlayerController.DashEvent += OnPlayerDash;
+            m_PlayerController.JumpEvent += OnPlayerJump;
+        }
     }
 
     protected void OnDestroy()
@@ -76,6 +83,12 @@ public class GameSFXPlayer : MonoBehaviour
         if (m_GameController != null) {
             m_GameController.PlayerDefeatedEvent -= OnPlayerDefeatedEvent;
             m_GameController.BossDefeatedEvent -= OnBossDefeatedEvent;
+        }
+        if (m_PlayerController != null) {
+            m_PlayerController.AttackEvent -= OnPlayerAttack;
+            m_PlayerController.PowerUpEvent -= OnPlayerPowerUp;
+            m_PlayerController.DashEvent -= OnPlayerDash;
+            m_PlayerController.JumpEvent -= OnPlayerJump;
         }
     }
 
@@ -108,7 +121,7 @@ public class GameSFXPlayer : MonoBehaviour
 
     private void OnPlayerDefeatedEvent()
     {
-        PlayAudio(settings.bossWins);
+        PlayAudio(settings.playerDefeated);
     }
 
     private void OnEnemyDie()
@@ -124,6 +137,31 @@ public class GameSFXPlayer : MonoBehaviour
             PlayAudio(settings.enemyAttackProjectile);
         }
     }
+
+    private void  OnPlayerAttack(PlayerController.AttackPattern attackPattern)
+    {
+        if (attackPattern == PlayerController.AttackPattern.Melee) {
+            PlayAudio(settings.playerAttackMelee);
+        } else if (attackPattern == PlayerController.AttackPattern.Projectile) {
+            PlayAudio(settings.playerAttackProjectile);
+        }
+    }
+
+    private void  OnPlayerPowerUp()
+    {
+        PlayAudio(settings.playerPowerUp);
+    }
+
+    private void  OnPlayerDash()
+    {
+        PlayAudio(settings.playerDash);
+    }
+
+    private void  OnPlayerJump()
+    {
+        PlayAudio(settings.playerJump);
+    }
+
 
     private void PlayAudio(AudioClip audioClip)
     {
