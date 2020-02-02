@@ -100,7 +100,7 @@ public class BossController : MonoBehaviour
     private void Attack()
     {
         var attackPattern = RandomAttackPattern();
-        Debug.LogFormat("Attacked: {0}", attackPattern);
+        //Debug.LogFormat("Attacked: {0}", attackPattern);
         switch (attackPattern) {
             case AttackPattern.Melee:
                 m_EnemyMelee.Enabled = true;

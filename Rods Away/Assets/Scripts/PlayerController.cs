@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerProjectile m_PlayerProjectile = default;
 
+    [SerializeField]
+    private BossHealthCollider m_PlayerHealthCollider = default;
+
     [SerializeField] private LayerMask platformsLayerMask;
     [SerializeField] private LayerMask wallsLayerMask;
 
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour
                 checkpoint.OnSet += UpdateCheckPoint;
             }
         }
+        m_PlayerHealthCollider.HitEvent += OnHit;
     }
 
     protected void OnDestroy()
@@ -239,6 +243,20 @@ public class PlayerController : MonoBehaviour
     private void UpdateCheckPoint(Vector3 location)
     {
 
+    }
+
+    private void OnHit()
+    {
+        Debug.LogFormat("Player Hit");
+        /*m_CurrentHealth--;
+        if (m_CurrentHealth <= 0)
+        {
+            DieEvent?.Invoke();
+        }
+        else
+        {
+            HurtEvent?.Invoke();
+        }*/
     }
 
     #endregion

@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 1080609376}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1338,6 +1338,7 @@ GameObject:
   - component: {fileID: 1188439816}
   - component: {fileID: 1188439815}
   - component: {fileID: 1188439820}
+  - component: {fileID: 1188439821}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1359,6 +1360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootTimer: 3
   m_PlayerProjectile: {fileID: 339561463}
+  m_PlayerHealthCollider: {fileID: 0}
   platformsLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1472,7 +1474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188439814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.79, z: 0}
+  m_LocalPosition: {x: -7.43, y: -2, z: 0}
   m_LocalScale: {x: 5, y: 10, z: 1}
   m_Children:
   - {fileID: 1294690907}
@@ -1492,6 +1494,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GameController: {fileID: 1252611489}
+--- !u!114 &1188439821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188439814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd48fd59bb60a4c878cd86ca1f781c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1252611487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,7 +1733,7 @@ GameObject:
   - component: {fileID: 1883464399}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
