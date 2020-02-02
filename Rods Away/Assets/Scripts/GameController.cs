@@ -42,10 +42,6 @@ public class GameController : MonoBehaviour
 
     #region Inspectables
 
-    public PlayerController playerController;
-    public BossController bossController;
-    public EnemyController[] enemyControllers;
-
     #endregion
 
     #region Private Member Variables
@@ -67,10 +63,6 @@ public class GameController : MonoBehaviour
     protected void Start()
     {
         StartCoroutine(Initialize());
-
-        Debug.Assert(playerController != null, "playerController not set");
-        Debug.Assert(bossController != null, "bossController not set");
-        Debug.Assert(enemyControllers != null && enemyControllers.Length > 0, "enemyControllers not set");
     }
 
     protected void Update()
