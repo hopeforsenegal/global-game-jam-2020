@@ -136,6 +136,8 @@ public class BossController : MonoBehaviour
 
         m_CurrentHealth -= 10;
         if (m_CurrentHealth <= 0) {
+            if (isDead)
+                return;
             isDead = true;
             m_Health.Viewable(false);
             DieEvent?.Invoke();

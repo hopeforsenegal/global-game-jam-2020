@@ -51,6 +51,7 @@ public class EnemyController : MonoBehaviour
 
     private float m_CurrentTimer;
     private Vector3 m_ProjectileStartLocation;
+    private bool isDead;
 
     #endregion
 
@@ -73,6 +74,9 @@ public class EnemyController : MonoBehaviour
 
     protected void Update()
     {
+        if (isDead)
+            return;
+
         if (m_CurrentTimer + attackTimer <= Time.time) {
             m_CurrentTimer = Time.time;
             Attack();
@@ -111,6 +115,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnHit()
     {
+        if (isDead)
+            return;
+        isDead = true;
         DieEvent?.Invoke();
     }
 
