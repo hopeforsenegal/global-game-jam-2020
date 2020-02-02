@@ -13,11 +13,12 @@ public class Settings : ScriptableObject
     public AudioClip playerWallBlock;
     public AudioClip playerThroughWall;
     public AudioClip playerAttackMelee;
-    public AudioClip playerAttackRanged;
+    public AudioClip playerAttackProjectile;
     public AudioClip playerPowerUp;
     public AudioClip playerDash;
     public AudioClip playerJump;
     public AudioClip playerMove;
+    public AudioClip playerDefeated;
 
     [Header("Enemy SFX")]
     public AudioClip enemyAttackMelee;
@@ -28,6 +29,5 @@ public class Settings : ScriptableObject
     public AudioClip bossAttackMelee;
     public AudioClip bossAttackProjectile;
     public AudioClip bossHurt;
-    public AudioClip bossWins;
     public AudioClip bossLose;
 }

@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWonScreenMusicTrack: {fileID: 0}
   mainMenuMusicTrack: {fileID: 0}
-  backgroundMusicTrack: {fileID: 8300000, guid: 532e417ffa3f95747908419a00be3780,
+  backgroundMusicTrack: {fileID: 8300000, guid: a3fddaa021bca41dfab25555824b68c7,
     type: 3}
-  playerWallBlock: {fileID: 0}
+  playerWallBlock: {fileID: 8300000, guid: 532e417ffa3f95747908419a00be3780, type: 3}
   playerThroughWall: {fileID: 0}
   playerAttackMelee: {fileID: 0}
-  playerAttackRanged: {fileID: 0}
+  playerAttackProjectile: {fileID: 0}
   playerPowerUp: {fileID: 0}
   playerDash: {fileID: 0}
-  playerJump: {fileID: 0}
-  playerMove: {fileID: 0}
+  playerJump: {fileID: 8300000, guid: 90505d002e4d047129e09bd1c2f3a4b7, type: 3}
+  playerMove: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
+  playerDefeated: {fileID: 0}
   enemyAttackMelee: {fileID: 0}
   enemyAttackProjectile: {fileID: 0}
   enemyHurt: {fileID: 0}
   bossAttackMelee: {fileID: 0}
   bossAttackProjectile: {fileID: 0}
   bossHurt: {fileID: 0}
-  bossWins: {fileID: 0}
   bossLose: {fileID: 0}

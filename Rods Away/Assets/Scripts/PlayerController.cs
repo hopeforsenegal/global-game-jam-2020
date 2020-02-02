@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour
             {
                 float jumpVelocity = 30f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
+                JumpEvent?.Invoke();
             }
             else if (canDoubleJump && unlockDoubleJump)
             {
@@ -145,6 +146,7 @@ public class PlayerController : MonoBehaviour
             attacking = true;
             meleeCollider.GetComponent<BoxCollider2D>().enabled = true;
             meleeCollider.GetComponent<Renderer>().enabled = true;
+            AttackEvent?.Invoke(AttackPattern.Melee);
         }
 
         if(dashing)
@@ -187,6 +189,8 @@ public class PlayerController : MonoBehaviour
                     transform.position += new Vector3(-5.0f, 0.0f, 0.0f);
                 }
             }
+
+            DashEvent?.Invoke();
         }
 
         if (shooting)
@@ -202,6 +206,7 @@ public class PlayerController : MonoBehaviour
             m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
             shootTimer = Time.time;
             shooting = true;
+            AttackEvent?.Invoke(AttackPattern.Projectile);
         }
 
         if (Input.GetKeyDown(KeyCode.D) && !direction)
@@ -260,6 +265,5 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-
 }
         
