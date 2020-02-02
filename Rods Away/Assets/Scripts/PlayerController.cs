@@ -173,9 +173,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("Fire3") && unlockShooting && !shooting)
+        if (shooting)
         {
-                m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
+            if (Time.time > (shootTimer + 1.0f))
+            {
+                shooting = false;
+            }
+        }
+
+        if (Input.GetButtonDown("Fire3") && unlockShooting && !shooting)
+        {
+            m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
+            shootTimer = Time.time;
+            shooting = true;
         }
 
         if (Input.GetKeyDown(KeyCode.D) && !direction)
