@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private float attackTimer = 0.0f;
     private float dashTimer = 0.0f;
-    private float moveSpeed = 10;
+    private float moveSpeed = 6;
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
     private bool isDead;

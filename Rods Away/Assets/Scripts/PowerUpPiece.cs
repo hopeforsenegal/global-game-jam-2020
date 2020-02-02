@@ -31,6 +31,9 @@ public class PowerUpPiece : MonoBehaviour
             enabled = value;
             m_PowerUpPieceCollider.Enabled = value;
             m_Renderer.enabled = value;
+            if(m_Pulsater!= null) {
+                m_Pulsater.enabled = value;
+            }
         }
     }
 
@@ -46,6 +49,8 @@ public class PowerUpPiece : MonoBehaviour
 
     [SerializeField]
     private Renderer m_Renderer = default;
+    [SerializeField]
+    private Pulsater m_Pulsater = default;
 
     #endregion
 
@@ -59,6 +64,9 @@ public class PowerUpPiece : MonoBehaviour
     {
         Debug.Assert(m_PowerUpPieceCollider != null, "m_PowerUpPieceCollider not set");
         Debug.Assert(m_Renderer != null, "m_Renderer not set");
+        if(m_Pulsater == null) {
+            m_Pulsater = GetComponentInChildren<Pulsater>();
+        }
 
         m_PowerUpPieceCollider.PowerUpHitEvent += OnPowerUpHit;
     }
