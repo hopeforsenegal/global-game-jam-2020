@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -27,6 +28,7 @@ public class GameSFXPlayer : MonoBehaviour
     private BossController m_BossController;
     private GameController m_GameController;
     private PlayerController m_PlayerController;
+    private EnemyController[] m_EnemyControllers;
 
     #endregion
 
@@ -46,10 +48,27 @@ public class GameSFXPlayer : MonoBehaviour
             m_BossController.AttackEvent += OnBossAttack;
             m_BossController.HurtEvent += OnBossHurt;
         }
+        m_EnemyControllers = FindObjectsOfType<EnemyController>();
+        if (m_EnemyControllers != null) {
+            foreach (var enemy in m_EnemyControllers) {
+                if (enemy != null) {
+                    enemy.AttackEvent += OnEnemyAttack;
+                    enemy.DieEvent += OnEnemyDie;
+                }
+            }
+        }
     }
 
     protected void OnDestroy()
     {
+        if (m_EnemyControllers != null) {
+            foreach (var enemy in m_EnemyControllers) {
+                if (enemy != null) {
+                    enemy.AttackEvent -= OnEnemyAttack;
+                    enemy.DieEvent -= OnEnemyDie;
+                }
+            }
+        }
         if (m_BossController != null) {
             m_BossController.AttackEvent -= OnBossAttack;
             m_BossController.HurtEvent -= OnBossHurt;
@@ -72,7 +91,7 @@ public class GameSFXPlayer : MonoBehaviour
     {
         if (attackPattern == BossController.AttackPattern.Melee) {
             PlayAudio(settings.bossAttackMelee);
-        } else if(attackPattern == BossController.AttackPattern.Projectile) {
+        } else if (attackPattern == BossController.AttackPattern.Projectile) {
             PlayAudio(settings.bossAttackProjectile);
         }
     }
@@ -90,6 +109,20 @@ public class GameSFXPlayer : MonoBehaviour
     private void OnPlayerDefeatedEvent()
     {
         PlayAudio(settings.bossWins);
+    }
+
+    private void OnEnemyDie()
+    {
+        PlayAudio(settings.enemyHurt);
+    }
+
+    private void OnEnemyAttack(EnemyController.AttackPattern attackPattern)
+    {
+        if (attackPattern == EnemyController.AttackPattern.Melee) {
+            PlayAudio(settings.enemyAttackMelee);
+        } else if (attackPattern == EnemyController.AttackPattern.Projectile) {
+            PlayAudio(settings.enemyAttackProjectile);
+        }
     }
 
     private void PlayAudio(AudioClip audioClip)
