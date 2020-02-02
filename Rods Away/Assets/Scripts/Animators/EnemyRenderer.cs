@@ -101,7 +101,11 @@ public class EnemyRenderer : MonoBehaviour
 
     private void OnDieAction()
     {
-        m_EnemyAnimator.Die(m_EnemyController.attackType == EnemyController.AttackPattern.Projectile);
+        m_EnemyAnimator.Die(m_EnemyController.attackType == EnemyController.AttackPattern.Projectile,
+        () =>
+        {
+            m_EnemyController.gameObject.SetActive(false);
+        });
         m_CurrentTimer = Time.time;
     }
 

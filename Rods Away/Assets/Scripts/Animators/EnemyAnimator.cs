@@ -57,7 +57,7 @@ public class EnemyAnimator : MonoBehaviour
     public void Die(bool hasGun, Action onDieAnimationComplete = null)
     {
         Debug.LogFormat("Enemy Die");
-        m_StandardAnimator.Play(string.Empty, hasGun ? "die_gun" : "die_nogun", string.Empty, () =>
+        m_StandardAnimator.Play(string.Empty, hasGun ? "death_gun" : "death_nogun", string.Empty, () =>
         {
             m_StandardAnimator.Clear();
             onDieAnimationComplete?.Invoke();

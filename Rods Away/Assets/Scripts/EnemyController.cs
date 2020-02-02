@@ -111,7 +111,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnHit()
     {
-        gameObject.SetActive(false);
         DieEvent?.Invoke();
     }
 
