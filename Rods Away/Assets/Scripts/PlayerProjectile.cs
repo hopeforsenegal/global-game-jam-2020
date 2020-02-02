@@ -19,7 +19,7 @@ public class PlayerProjectile : MonoBehaviour
         set
         {
             enabled = value;
-            m_Collider.enabled = value;
+            m_Collider.Enabled = value;
             m_Renderer.enabled = value;
         }
     }
@@ -32,7 +32,7 @@ public class PlayerProjectile : MonoBehaviour
     public bool moveLeft;
 
     [SerializeField]
-    private BoxCollider2D m_Collider = default;
+    private PlayerProjectileCollider m_Collider = default;
 
     [SerializeField]
     private Renderer m_Renderer = default;
@@ -49,14 +49,20 @@ public class PlayerProjectile : MonoBehaviour
     {
         Debug.Assert(m_Collider != null, "m_Collider not set");
         Debug.Assert(m_Renderer != null, "m_Renderer not set");
+
+        m_Collider.HitWallEvent += OnHitWall;
+    }
+
+    protected void OnDestroy()
+    {
+        m_Collider.HitWallEvent -= OnHitWall;
     }
 
     protected void FixedUpdate()
     {
         var direction = moveLeft ? Vector3.right : Vector3.left;
         transform.Translate(direction * (Time.deltaTime * speed), Space.World);
-        if (!m_Renderer.isVisible)
-        {
+        if (!m_Renderer.isVisible) {
             Enabled = false;
         }
     }
@@ -77,6 +83,11 @@ public class PlayerProjectile : MonoBehaviour
     #endregion
 
     #region Private Methods
+
+    private void OnHitWall()
+    {
+        Enabled = false;
+    }
 
     #endregion
 }
