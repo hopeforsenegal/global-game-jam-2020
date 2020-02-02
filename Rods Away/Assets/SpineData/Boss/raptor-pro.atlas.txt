@@ -1,0 +1,104 @@
+
+raptor-pro.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+brows
+  rotate: true
+  xy: 854, 649
+  size: 86, 137
+  orig: 86, 137
+  offset: 0, 0
+  index: -1
+brows - Copy
+  rotate: true
+  xy: 854, 649
+  size: 86, 137
+  orig: 86, 137
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 557, 533
+  size: 47, 48
+  orig: 47, 48
+  offset: 0, 0
+  index: -1
+pupil
+  rotate: false
+  xy: 2, 2
+  size: 25, 27
+  orig: 25, 27
+  offset: 0, 0
+  index: -1
+raptor-back-arm
+  rotate: false
+  xy: 1108, 840
+  size: 163, 172
+  orig: 163, 172
+  offset: 0, 0
+  index: -1
+raptor-body
+  rotate: false
+  xy: 2, 31
+  size: 1264, 465
+  orig: 1264, 465
+  offset: 0, 0
+  index: -1
+raptor-front-arm
+  rotate: false
+  xy: 993, 532
+  size: 162, 203
+  orig: 162, 203
+  offset: 0, 0
+  index: -1
+raptor-front-leg
+  rotate: false
+  xy: 2, 498
+  size: 382, 514
+  orig: 382, 514
+  offset: 0, 0
+  index: -1
+raptor-hindleg-back
+  rotate: false
+  xy: 386, 583
+  size: 338, 429
+  orig: 338, 429
+  offset: 0, 0
+  index: -1
+raptor-jaw
+  rotate: false
+  xy: 854, 737
+  size: 252, 275
+  orig: 252, 275
+  offset: 0, 0
+  index: -1
+raptor-jaw-tooth
+  rotate: true
+  xy: 459, 508
+  size: 73, 96
+  orig: 73, 96
+  offset: 0, 0
+  index: -1
+raptor-mouth-inside
+  rotate: false
+  xy: 386, 499
+  size: 71, 82
+  orig: 71, 82
+  offset: 0, 0
+  index: -1
+raptor-tail-shadow
+  rotate: true
+  xy: 726, 635
+  size: 377, 126
+  orig: 377, 126
+  offset: 0, 0
+  index: -1
+raptor-tongue
+  rotate: false
+  xy: 726, 505
+  size: 171, 128
+  orig: 171, 128
+  offset: 0, 0
+  index: -1
