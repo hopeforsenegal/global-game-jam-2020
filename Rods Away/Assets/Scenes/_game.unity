@@ -3947,7 +3947,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.75
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -13517,8 +13517,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Melee
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1148105839940606044, guid: 8d81ded2e3d984ef7a77c41637f497d4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d81ded2e3d984ef7a77c41637f497d4, type: 3}
 --- !u!114 &2086563899 stripped
 MonoBehaviour:
