@@ -21,7 +21,8 @@ public class Settings : ScriptableObject
 
     [Header("Enemy SFX")]
     public AudioClip enemyAttackMelee;
-    public AudioClip enemyAttackRanged;
+    public AudioClip enemyAttackProjectile;
+    public AudioClip enemyHurt;
 
     [Header("Boss SFX")]
     public AudioClip bossAttackMelee;

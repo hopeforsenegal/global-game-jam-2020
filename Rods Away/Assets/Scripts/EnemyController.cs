@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -7,9 +8,18 @@ public class EnemyController : MonoBehaviour
 {
     #region Enums and Constants
 
+    public enum AttackPattern
+    {
+        Melee,
+        Projectile
+    }
+
     #endregion
 
     #region Events
+
+    public Action<AttackPattern> AttackEvent;
+    public Action DieEvent;
 
     #endregion
 

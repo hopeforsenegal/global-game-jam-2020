@@ -40,12 +40,12 @@ public class Checkpoint : MonoBehaviour
         m_BoxCollider.isTrigger = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider other)
     {
-        Debug.LogFormat("OnTriggerEnter");
+        Debug.LogFormat("OnTriggerEnter2D");
 
         if (other.CompareTag("Player")) {
-            Debug.LogFormat("OnTriggerEnter player");
+            Debug.LogFormat("OnTriggerEnter2D player");
             OnSet?.Invoke(transform.position);
         }
     }

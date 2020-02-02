@@ -38,12 +38,12 @@ public class BossHealthCollider : MonoBehaviour
         Debug.Assert(m_BoxCollider != null);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider other)
     {
-        Debug.LogFormat("BossHealthCollider OnTriggerEnter");
+        Debug.LogFormat("BossHealthCollider OnTriggerEnter2D");
 
         if (other.CompareTag("PlayerProjectile")) {
-            Debug.LogFormat("OnTriggerEnter player projectile");
+            Debug.LogFormat("OnTriggerEnter2D player projectile");
             HitEvent?.Invoke();
         }
     }
