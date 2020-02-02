@@ -38,10 +38,10 @@ public class BossController : MonoBehaviour
     private float meleeTimer = 0.5f;
 
     [SerializeField]
-    private BossHealthCollider m_BossHealthCollider = default;
+    private Health m_Health = default;
 
     [SerializeField]
-    private Health m_Health = default;
+    private EnemyHealthCollider m_EnemyHealthCollider = default;
 
     [SerializeField]
     private EnemyMelee m_EnemyMelee = default;
@@ -63,7 +63,7 @@ public class BossController : MonoBehaviour
 
     protected void Start()
     {
-        Debug.Assert(m_BossHealthCollider != null, "m_BossHealthCollider not set");
+        Debug.Assert(m_EnemyHealthCollider != null, "m_BossHealthCollider not set");
         Debug.Assert(m_EnemyMelee != null, "m_EnemyMelee not set");
         Debug.Assert(m_EnemyProjectile != null, "m_EnemyProjectile not set");
 
@@ -76,7 +76,7 @@ public class BossController : MonoBehaviour
 
         m_Health.Viewable(false);
 
-        m_BossHealthCollider.HitEvent += OnHit;
+        m_EnemyHealthCollider.HitEvent += OnHit;
     }
 
     protected void Update()

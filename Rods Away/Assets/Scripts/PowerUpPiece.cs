@@ -39,13 +39,13 @@ public class PowerUpPiece : MonoBehaviour
     #region Inspectables
 
     [SerializeField]
-    private Ability m_Ability;
+    private Ability m_Ability = default;
 
     [SerializeField]
-    private PowerUpPieceCollider m_PowerUpPieceCollider;
+    private PowerUpPieceCollider m_PowerUpPieceCollider = default;
 
     [SerializeField]
-    private Renderer m_Renderer;
+    private Renderer m_Renderer = default;
 
     #endregion
 

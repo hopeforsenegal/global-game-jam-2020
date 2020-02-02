@@ -3,7 +3,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
-public class BossHealthCollider : MonoBehaviour
+public class EnemyHealthCollider : MonoBehaviour
 {
     #region Enums and Constants
 
@@ -40,11 +40,8 @@ public class BossHealthCollider : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D other)
     {
-        //Debug.LogFormat("BossHealthCollider OnCollisionEnter2D tag:{0}", other.rigidbody.tag);
-
         if (other.rigidbody.CompareTag("PlayerProjectile")) {
             other.gameObject.GetComponentInParent<PlayerProjectile>().Enabled = false;
-            //Debug.LogFormat("BossHealthCollider OnCollisionEnter2D player projectile");
             HitEvent?.Invoke();
         }
     }
