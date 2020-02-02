@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public Action DieEvent;
     public Action RespawnEvent;
 
-    public Action<Vector3> PowerUpEvent;
+    public Action<Vector3, PowerUpPiece.Ability> PowerUpEvent;
     public Action DashEvent;
     public Action JumpEvent;
 
@@ -256,21 +256,21 @@ public class PlayerController : MonoBehaviour
             if (m_DoubleJumpCount == 4) {
                 unlockDoubleJump = true;
                 Debug.LogFormat("You can now double jump");
-                PowerUpEvent?.Invoke(location);
+                PowerUpEvent?.Invoke(location, ability);
             }
         } else if (ability == PowerUpPiece.Ability.Dash) {
             m_DashCount++;
             if (m_DashCount == 4) {
                 unlockDash = true;
                 Debug.LogFormat("You can now dash");
-                PowerUpEvent?.Invoke(location);
+                PowerUpEvent?.Invoke(location, ability);
             }
         } else if (ability == PowerUpPiece.Ability.Shooting) {
             m_ShootingCount++;
             if (m_ShootingCount == 4) {
                 unlockShooting = true;
                 Debug.LogFormat("You can now shoot");
-                PowerUpEvent?.Invoke(location);
+                PowerUpEvent?.Invoke(location, ability);
             }
         }
     }

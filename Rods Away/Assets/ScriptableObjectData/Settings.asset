@@ -34,3 +34,6 @@ MonoBehaviour:
   bossAttackProjectile: {fileID: 0}
   bossHurt: {fileID: 0}
   bossLose: {fileID: 8300000, guid: eb2572b07455c40eb8ea8383c3bb5224, type: 3}
+  doubleJumpImage: {fileID: 21300000, guid: 564f1186b3b1243a49a3e0371732e557, type: 3}
+  dashJumpImage: {fileID: 0}
+  shootJumpImage: {fileID: 0}

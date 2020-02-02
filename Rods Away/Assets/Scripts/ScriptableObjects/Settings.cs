@@ -31,4 +31,9 @@ public class Settings : ScriptableObject
     public AudioClip bossAttackProjectile;
     public AudioClip bossHurt;
     public AudioClip bossLose;
+
+    [Header("Instructions")]
+    public Sprite doubleJumpImage;
+    public Sprite dashJumpImage;
+    public Sprite shootJumpImage;
 }

@@ -81,7 +81,7 @@ public class PlayerRespawner : MonoBehaviour
         m_PlayerController.Respawn(m_LastSpawnLocation);
     }
 
-    private void UpdateCheckPoint(Vector3 location)
+    private void UpdateCheckPoint(Vector3 location, PowerUpPiece.Ability __)
     {
         m_LastSpawnLocation = location;
     }
