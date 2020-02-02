@@ -56,6 +56,7 @@ public class BossController : MonoBehaviour
     private float m_CurrentTimer;
     private Vector3 m_ProjectileStartLocation;
     private int m_CurrentHealth;
+    private bool isDead;
 
     #endregion
 
@@ -81,6 +82,9 @@ public class BossController : MonoBehaviour
 
     protected void Update()
     {
+        if (isDead)
+            return;
+
         if (m_CurrentTimer + attackTimer <= Time.time) {
             m_CurrentTimer = Time.time;
             Attack();
@@ -128,9 +132,11 @@ public class BossController : MonoBehaviour
 
     private void OnHit()
     {
-        Debug.LogFormat("Boss Was hit when health was {0}", m_CurrentHealth);
+        Debug.LogFormat("Boss was hit when health was {0}", m_CurrentHealth);
+
         m_CurrentHealth -= 10;
         if (m_CurrentHealth <= 0) {
+            isDead = true;
             m_Health.Viewable(false);
             DieEvent?.Invoke();
             m_EnemyHealthCollider.HitEvent -= OnHit;

@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire2") && unlockDash && !dashing && !attacking) {
-            Debug.LogFormat("Fire2");
+            //Debug.LogFormat("Fire2");
             dashTimer = Time.time;
             dashing = true;
 
@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire3") && unlockShooting && !shooting) {
+            //Debug.LogFormat("Fire3");
             m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
             shootTimer = Time.time;
             shooting = true;
@@ -201,18 +202,14 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetAxis("Horizontal") > 0.1f && !direction) {
-            //Debug.Log("D key was pressed.");
             direction = true;
             m_PlayerMelee.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
-
             return;
         }
 
         if (Input.GetAxis("Horizontal") < -0.1f && direction) {
-            //Debug.Log("A key was pressed.");
             direction = false;
             m_PlayerMelee.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
-
             return;
         }
 
