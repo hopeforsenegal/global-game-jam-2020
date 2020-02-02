@@ -38,7 +38,7 @@ public class BossHealthCollider : MonoBehaviour
         Debug.Assert(m_BoxCollider != null);
     }
 
-    private void OnTriggerEnter2D(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.LogFormat("BossHealthCollider OnTriggerEnter2D");
 
