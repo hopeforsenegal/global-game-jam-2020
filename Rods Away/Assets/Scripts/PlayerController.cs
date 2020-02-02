@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private PlayerProjectile m_PlayerProjectile = default;
 
     [SerializeField]
-    private BossHealthCollider m_PlayerHealthCollider = default;
+    private PlayerHealthCollider m_PlayerHealthCollider = default;
 
     [SerializeField] private LayerMask platformsLayerMask;
     [SerializeField] private LayerMask wallsLayerMask;
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
                 checkpoint.OnSet += UpdateCheckPoint;
             }
         }
-        m_PlayerHealthCollider.HitEvent += OnHit;
+        m_PlayerHealthCollider.PlayerHitEvent += OnHit;
     }
 
     protected void OnDestroy()
@@ -253,15 +253,7 @@ public class PlayerController : MonoBehaviour
     private void OnHit()
     {
         Debug.LogFormat("Player Hit");
-        /*m_CurrentHealth--;
-        if (m_CurrentHealth <= 0)
-        {
-            DieEvent?.Invoke();
-        }
-        else
-        {
-            HurtEvent?.Invoke();
-        }*/
+        DieEvent?.Invoke();
     }
 
     #endregion

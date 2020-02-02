@@ -1360,13 +1360,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootTimer: 3
   m_PlayerProjectile: {fileID: 339561463}
-  m_PlayerHealthCollider: {fileID: 0}
+  m_PlayerHealthCollider: {fileID: 1188439821}
   platformsLayerMask:
     serializedVersion: 2
     m_Bits: 256
   wallsLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  direction: 1
   isMoving: 0
   meleeCollider: {fileID: 1294690904}
 --- !u!50 &1188439816

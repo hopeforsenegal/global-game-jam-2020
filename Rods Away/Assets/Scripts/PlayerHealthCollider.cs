@@ -11,7 +11,7 @@ public class PlayerHealthCollider : MonoBehaviour
 
     #region Events
 
-    public Action HitEvent;
+    public Action PlayerHitEvent;
 
     #endregion
 
@@ -46,7 +46,7 @@ public class PlayerHealthCollider : MonoBehaviour
         {
             other.gameObject.GetComponentInParent<EnemyProjectile>().Enabled = false;
             Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy projectile");
-            HitEvent?.Invoke();
+            PlayerHitEvent?.Invoke();
         }
     }
     #endregion
