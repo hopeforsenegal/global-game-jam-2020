@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWonScreenMusicTrack: {fileID: 0}
   mainMenuMusicTrack: {fileID: 0}
-  backgroundMusicTrack: {fileID: 8300000, guid: a3fddaa021bca41dfab25555824b68c7,
+  backgroundMusicTrack: {fileID: 8300000, guid: e60494c65fb694f3f84a56ebbe8cd468,
     type: 3}
   playerWallBlock: {fileID: 8300000, guid: d81100c8f19d04b0d90b52f35cbb7fd8, type: 3}
   playerThroughWall: {fileID: 0}
