@@ -10,6 +10,8 @@ public class PowerUpPiece : MonoBehaviour
     public enum Ability
     {
         DoubleJump,
+        Dash,
+        Shooting,
     }
 
     #endregion
