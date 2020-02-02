@@ -2,7 +2,6 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
     #region Enums and Constants
@@ -50,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private PlayerProjectile m_PlayerProjectile = default;
+    [SerializeField]
+    private PlayerProjectile m_PlayerMelee = default;
 
     [SerializeField]
     private PlayerHealthCollider m_PlayerHealthCollider = default;
@@ -70,9 +71,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
     private bool isDead;
-
-
-    public GameObject meleeCollider;
 
     #endregion
 
@@ -97,13 +95,15 @@ public class PlayerController : MonoBehaviour
     {
         m_PowerUpPieces = FindObjectsOfType<PowerUpPiece>();
 
+        m_PlayerMelee.Enabled = false;
+
         foreach (var powerUp in m_PowerUpPieces) {
             if (powerUp != null) {
                 powerUp.PowerUpHitEvent += OnPowerUpHit;
             }
         }
 
-        m_PlayerHealthCollider.PlayerHitEvent += OnHit;
+        m_PlayerHealthCollider.PlayerHitEvent += OnPlayerHit;
     }
 
     protected void OnDestroy()
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        m_PlayerHealthCollider.PlayerHitEvent -= OnHit;
+        m_PlayerHealthCollider.PlayerHitEvent -= OnPlayerHit;
     }
 
     protected void Update()
@@ -142,8 +142,7 @@ public class PlayerController : MonoBehaviour
 
         if (attacking) {
             if (Time.time > (attackTimer + 0.3f)) {
-                meleeCollider.GetComponent<BoxCollider2D>().enabled = false;
-                meleeCollider.GetComponent<Renderer>().enabled = false;
+                m_PlayerMelee.Enabled = false;
                 attacking = false;
             }
         }
@@ -152,8 +151,7 @@ public class PlayerController : MonoBehaviour
             //Debug.LogFormat("Fire1");
             attackTimer = Time.time;
             attacking = true;
-            meleeCollider.GetComponent<BoxCollider2D>().enabled = true;
-            meleeCollider.GetComponent<Renderer>().enabled = true;
+            m_PlayerMelee.Launch(transform.position, m_PlayerMelee.speed, direction);
             AttackEvent?.Invoke(AttackPattern.Melee);
         }
 
@@ -205,7 +203,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0.1f && !direction) {
             //Debug.Log("D key was pressed.");
             direction = true;
-            meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
+            m_PlayerMelee.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
 
             return;
         }
@@ -213,7 +211,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Horizontal") < -0.1f && direction) {
             //Debug.Log("A key was pressed.");
             direction = false;
-            meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
+            m_PlayerMelee.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
 
             return;
         }
@@ -243,7 +241,7 @@ public class PlayerController : MonoBehaviour
         return raycastHit2d.collider != null;
     }
 
-    private void OnHit()
+    private void OnPlayerHit()
     {
         Debug.LogFormat("Player Hit");
         isDead = true;
