@@ -28,8 +28,7 @@ public class EnemyController : MonoBehaviour
 
     #region Inspectables
 
-    [SerializeField]
-    private AttackPattern attackType = default;
+    public AttackPattern attackType = default;
 
     [SerializeField]
     private float attackTimer = 3.0f;

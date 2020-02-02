@@ -1,0 +1,195 @@
+
+robot_enemy.png
+size: 4096,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back-foot
+  rotate: true
+  xy: 301, 2
+  size: 16, 11
+  orig: 16, 11
+  offset: 0, 0
+  index: -1
+back-shin
+  rotate: true
+  xy: 901, 298
+  size: 42, 48
+  orig: 42, 48
+  offset: 0, 0
+  index: -1
+back-thigh
+  rotate: false
+  xy: 1469, 364
+  size: 47, 47
+  orig: 47, 47
+  offset: 0, 0
+  index: -1
+backarmor
+  rotate: false
+  xy: 1755, 322
+  size: 162, 182
+  orig: 162, 182
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 1557, 232
+  size: 196, 235
+  orig: 196, 235
+  offset: 0, 0
+  index: -1
+burst01
+  rotate: true
+  xy: 709, 9
+  size: 286, 309
+  orig: 286, 309
+  offset: 0, 0
+  index: -1
+burst02
+  rotate: true
+  xy: 1020, 29
+  size: 311, 361
+  orig: 311, 361
+  offset: 0, 0
+  index: -1
+burst03-bg
+  rotate: true
+  xy: 1300, 469
+  size: 551, 453
+  orig: 551, 453
+  offset: 0, 0
+  index: -1
+burst03-fg
+  rotate: true
+  xy: 856, 342
+  size: 678, 442
+  orig: 678, 442
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 1911, 170
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+eye-highlight
+  rotate: false
+  xy: 856, 297
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+eye-pupil
+  rotate: false
+  xy: 951, 305
+  size: 35, 35
+  orig: 35, 35
+  offset: 0, 0
+  index: -1
+eye-stalk
+  rotate: false
+  xy: 1557, 99
+  size: 147, 131
+  orig: 147, 131
+  offset: 0, 0
+  index: -1
+front-foot
+  rotate: false
+  xy: 314, 6
+  size: 19, 12
+  orig: 19, 12
+  offset: 0, 0
+  index: -1
+front-lower-arm
+  rotate: false
+  xy: 1300, 342
+  size: 110, 125
+  orig: 110, 125
+  offset: 0, 0
+  index: -1
+front-shin
+  rotate: false
+  xy: 1548, 39
+  size: 49, 56
+  orig: 49, 56
+  offset: 0, 0
+  index: -1
+front-thigh
+  rotate: false
+  xy: 1469, 413
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+front-upper-arm
+  rotate: true
+  xy: 1412, 354
+  size: 113, 55
+  orig: 113, 55
+  offset: 0, 0
+  index: -1
+gun-nohand
+  rotate: true
+  xy: 1706, 20
+  size: 210, 203
+  orig: 210, 203
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 12
+  size: 297, 272
+  orig: 297, 272
+  offset: 0, 0
+  index: -1
+lower-back-arm
+  rotate: false
+  xy: 1383, 4
+  size: 101, 91
+  orig: 101, 91
+  offset: 0, 0
+  index: -1
+metaljaw
+  rotate: true
+  xy: 1383, 97
+  size: 243, 172
+  orig: 243, 172
+  offset: 0, 0
+  index: -1
+splat01
+  rotate: true
+  xy: 1755, 506
+  size: 514, 503
+  orig: 514, 503
+  offset: 0, 0
+  index: -1
+splat01-fg
+  rotate: false
+  xy: 301, 20
+  size: 406, 264
+  orig: 406, 264
+  offset: 0, 0
+  index: -1
+splat02
+  rotate: true
+  xy: 2, 286
+  size: 734, 511
+  orig: 734, 511
+  offset: 0, 0
+  index: -1
+splat03
+  rotate: true
+  xy: 515, 297
+  size: 723, 339
+  orig: 723, 339
+  offset: 0, 0
+  index: -1
+upper-back-arm
+  rotate: false
+  xy: 1486, 9
+  size: 60, 86
+  orig: 60, 86
+  offset: 0, 0
+  index: -1
