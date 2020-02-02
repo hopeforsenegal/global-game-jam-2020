@@ -110,9 +110,10 @@ public class AudioPlayer : MonoBehaviour
 	public void PlaySound(AudioClip audio)
 	{
 		bool soundPlayed = false;
-		foreach (AudioSource source in m_AudioSources)
+        for (int i = 1; i < m_AudioSources.Length; i++)
 		{
-			if (!source.isPlaying)
+            AudioSource source = m_AudioSources[i];
+            if (!source.isPlaying)
 			{
 				source.clip = audio;
 				source.Play();
