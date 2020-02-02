@@ -123,7 +123,7 @@ public class BossController : MonoBehaviour
 
     private void OnHit()
     {
-        Debug.LogFormat("Boss Was hit");
+        Debug.LogFormat("Boss Was hit when health was {0}", m_CurrentHealth);
         m_CurrentHealth--;
         if (m_CurrentHealth <= 0) {
             DieEvent?.Invoke();

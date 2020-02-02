@@ -42,10 +42,10 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.LogFormat("OnTriggerEnter2D");
+        Debug.LogFormat("Checkpoint OnTriggerEnter2D");
 
         if (other.CompareTag("Player")) {
-            Debug.LogFormat("OnTriggerEnter2D player");
+            Debug.LogFormat("Checkpoint OnTriggerEnter2D player");
             OnSet?.Invoke(transform.position);
         }
     }

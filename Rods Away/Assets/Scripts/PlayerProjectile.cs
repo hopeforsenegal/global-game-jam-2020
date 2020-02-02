@@ -51,7 +51,7 @@ public class PlayerProjectile : MonoBehaviour
         Debug.Assert(m_Renderer != null, "m_Renderer not set");
     }
 
-    protected void Update()
+    protected void FixedUpdate()
     {
         var direction = moveLeft ? Vector3.right : Vector3.left;
         transform.Translate(direction * (Time.deltaTime * speed), Space.World);
@@ -69,7 +69,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         Debug.LogFormat("Launch");
         Enabled = true;
-        transform.SetPositionAndRotation(location, Quaternion.identity);
+        transform.position = location;
         this.speed = speed;
         this.moveLeft = moveLeft;
     }
