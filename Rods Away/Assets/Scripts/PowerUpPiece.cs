@@ -1,0 +1,85 @@
+﻿
+using System;
+using UnityEngine;
+
+[DisallowMultipleComponent]
+public class PowerUpPiece : MonoBehaviour
+{
+    #region Enums and Constants
+
+    public enum Ability
+    {
+        DoubleJump,
+    }
+
+    #endregion
+
+    #region Events
+
+    public Action<Ability> PowerUpHitEvent;
+
+    #endregion
+
+    #region Properties
+
+    public bool Enabled
+    {
+        set
+        {
+            enabled = value;
+            m_PowerUpPieceCollider.Enabled = value;
+            m_Renderer.enabled = value;
+        }
+    }
+
+    #endregion
+
+    #region Inspectables
+
+    [SerializeField]
+    private Ability m_Ability;
+
+    [SerializeField]
+    private PowerUpPieceCollider m_PowerUpPieceCollider;
+
+    [SerializeField]
+    private Renderer m_Renderer;
+
+    #endregion
+
+    #region Private Member Variables
+
+    #endregion
+
+    #region Monobehaviours
+
+    protected void Start()
+    {
+        Debug.Assert(m_PowerUpPieceCollider != null, "m_PowerUpPieceCollider not set");
+        Debug.Assert(m_Renderer != null, "m_Renderer not set");
+
+        m_PowerUpPieceCollider.PowerUpHitEvent += OnPowerUpHit;
+    }
+
+    protected void OnDestroy()
+    {
+        m_PowerUpPieceCollider.PowerUpHitEvent -= OnPowerUpHit;
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    private void OnPowerUpHit()
+    {
+        Debug.LogFormat("PowerUpPiece OnPowerUpHit player");
+        Enabled = false;
+        PowerUpHitEvent?.Invoke(m_Ability);
+    }
+
+    #endregion
+}

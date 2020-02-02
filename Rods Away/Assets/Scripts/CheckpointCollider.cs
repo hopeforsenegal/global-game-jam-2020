@@ -3,7 +3,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
-public class Checkpoint : MonoBehaviour
+public class CheckpointCollider : MonoBehaviour
 {
     #region Enums and Constants
 

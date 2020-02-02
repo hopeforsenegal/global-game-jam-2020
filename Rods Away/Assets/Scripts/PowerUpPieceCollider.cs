@@ -1,9 +1,10 @@
-﻿using System;
+﻿
+using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
-public class PlayerHealthCollider : MonoBehaviour
+public class PowerUpPieceCollider : MonoBehaviour
 {
     #region Enums and Constants
 
@@ -11,11 +12,20 @@ public class PlayerHealthCollider : MonoBehaviour
 
     #region Events
 
-    public Action PlayerHitEvent;
+    public Action PowerUpHitEvent;
 
     #endregion
 
     #region Properties
+
+    public bool Enabled
+    {
+        set
+        {
+            enabled = value;
+            m_BoxCollider.enabled = value;
+        }
+    }
 
     #endregion
 
@@ -38,15 +48,13 @@ public class PlayerHealthCollider : MonoBehaviour
         Debug.Assert(m_BoxCollider != null);
     }
 
-    protected void OnCollisionEnter2D(Collision2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D tag:{0}", other.gameObject.tag);
+        Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D tag:{0}", other.gameObject.tag);
 
-        if (other.gameObject.CompareTag("EnemyProjectile"))
-        {
-            other.gameObject.GetComponentInParent<EnemyProjectile>().Enabled = false;
-            Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy projectile");
-            PlayerHitEvent?.Invoke();
+        if (other.gameObject.CompareTag("Player")) {
+            Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D player");
+            PowerUpHitEvent?.Invoke();
         }
     }
 

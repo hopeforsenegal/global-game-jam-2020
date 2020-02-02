@@ -78,6 +78,10 @@ public class PlayerController : MonoBehaviour
 
     #region Private Member Variables
 
+    private int m_DoubleJumpCount;
+    private int m_DashCount;
+    private PowerUpPiece[] m_PowerUpPieces;
+
     #endregion
 
     #region Monobehaviours
@@ -90,18 +94,25 @@ public class PlayerController : MonoBehaviour
 
     protected void Start()
     {
-        m_PlayerHealthCollider.PlayerHitEvent += OnHit;
-    }
+        m_PowerUpPieces = FindObjectsOfType<PowerUpPiece>();
 
-    public void Respawn(Vector3 location)
-    {
-        transform.SetPositionAndRotation(location, Quaternion.identity);
-        isDead = false;
-        RespawnEvent?.Invoke();
+        foreach (var powerUp in m_PowerUpPieces) {
+            if (powerUp != null) {
+                powerUp.PowerUpHitEvent += OnPowerUpHit;
+            }
+        }
+
+        m_PlayerHealthCollider.PlayerHitEvent += OnHit;
     }
 
     protected void OnDestroy()
     {
+        foreach (var powerUp in m_PowerUpPieces) {
+            if (powerUp != null) {
+                powerUp.PowerUpHitEvent -= OnPowerUpHit;
+            }
+        }
+
         m_PlayerHealthCollider.PlayerHitEvent -= OnHit;
     }
 
@@ -114,37 +125,29 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(Vector3.right * (Time.deltaTime * move), Space.World);
 
-        if (IsGrounded())
-        {
+        if (IsGrounded()) {
             canDoubleJump = true;
         }
 
-        if ( Input.GetButtonDown("Jump"))
-        {
-            if (IsGrounded())
-            {
+        if (Input.GetButtonDown("Jump")) {
+            if (IsGrounded()) {
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
                 JumpEvent?.Invoke();
-            }
-            else if (canDoubleJump && unlockDoubleJump)
-            {
+            } else if (canDoubleJump && unlockDoubleJump) {
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
                 canDoubleJump = false;
             }
         }
 
-        if (attacking)
-        {
-            if (Time.time > (attackTimer + 0.3f))
-            {
+        if (attacking) {
+            if (Time.time > (attackTimer + 0.3f)) {
                 meleeCollider.GetComponent<BoxCollider2D>().enabled = false;
                 meleeCollider.GetComponent<Renderer>().enabled = false;
                 attacking = false;
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !attacking)
-        {
+        if (Input.GetButtonDown("Fire1") && !attacking) {
             //Debug.LogFormat("Fire1");
             attackTimer = Time.time;
             attacking = true;
@@ -153,43 +156,31 @@ public class PlayerController : MonoBehaviour
             AttackEvent?.Invoke(AttackPattern.Melee);
         }
 
-        if(dashing)
-        {
-            if (Time.time > (dashTimer + 1.0f))
-            {
+        if (dashing) {
+            if (Time.time > (dashTimer + 1.0f)) {
                 dashing = false;
             }
         }
 
-        if (Input.GetButtonDown("Fire2") && unlockDash && !dashing && !attacking)
-        {
+        if (Input.GetButtonDown("Fire2") && unlockDash && !dashing && !attacking) {
             Debug.LogFormat("Fire2");
             dashTimer = Time.time;
             dashing = true;
-            
-            if (direction)
-            {
+
+            if (direction) {
                 RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.right, 6f, wallsLayerMask);
-                if (raycastHit2d)
-                { 
+                if (raycastHit2d) {
                     float dashDistance = raycastHit2d.distance;
                     transform.position += new Vector3(dashDistance, 0.0f, 0.0f);
-                }
-                else
-                {
+                } else {
                     transform.position += new Vector3(5.0f, 0.0f, 0.0f);
                 }
-            }
-            else
-            {
+            } else {
                 RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.left, 6f, wallsLayerMask);
-                if (raycastHit2d)
-                {
+                if (raycastHit2d) {
                     float dashDistance = raycastHit2d.distance;
                     transform.position += new Vector3(-dashDistance, 0.0f, 0.0f);
-                }
-                else
-                {
+                } else {
                     transform.position += new Vector3(-5.0f, 0.0f, 0.0f);
                 }
             }
@@ -197,24 +188,20 @@ public class PlayerController : MonoBehaviour
             DashEvent?.Invoke();
         }
 
-        if (shooting)
-        {
-            if (Time.time > (shootTimer + 1.0f))
-            {
+        if (shooting) {
+            if (Time.time > (shootTimer + 1.0f)) {
                 shooting = false;
             }
         }
 
-        if (Input.GetButtonDown("Fire3") && unlockShooting && !shooting)
-        {
+        if (Input.GetButtonDown("Fire3") && unlockShooting && !shooting) {
             m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
             shootTimer = Time.time;
             shooting = true;
             AttackEvent?.Invoke(AttackPattern.Projectile);
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && !direction)
-        {
+        if (Input.GetKeyDown(KeyCode.D) && !direction) {
             //Debug.Log("D key was pressed.");
             direction = true;
             meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
@@ -222,8 +209,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && direction)
-        {
+        if (Input.GetKeyDown(KeyCode.A) && direction) {
             //Debug.Log("A key was pressed.");
             direction = false;
             meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
@@ -237,6 +223,13 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Public Methods
+
+    public void Respawn(Vector3 location)
+    {
+        transform.SetPositionAndRotation(location, Quaternion.identity);
+        isDead = false;
+        RespawnEvent?.Invoke();
+    }
 
     #endregion
 
@@ -256,6 +249,18 @@ public class PlayerController : MonoBehaviour
         DieEvent?.Invoke();
     }
 
+    private void OnPowerUpHit(PowerUpPiece.Ability ability)
+    {
+        Debug.LogFormat("OnPowerUpHit:{0}", ability);
+        if (ability == PowerUpPiece.Ability.DoubleJump) {
+            m_DoubleJumpCount++;
+            if (m_DoubleJumpCount == 4) {
+                unlockDoubleJump = true;
+                Debug.LogFormat("You can now double jump");
+                PowerUpEvent?.Invoke();
+            }
+        }
+    }
+
     #endregion
 }
-        
