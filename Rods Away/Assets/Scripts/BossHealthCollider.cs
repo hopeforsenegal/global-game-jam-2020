@@ -43,6 +43,7 @@ public class BossHealthCollider : MonoBehaviour
         Debug.LogFormat("BossHealthCollider OnCollisionEnter2D tag:{0}", other.rigidbody.tag);
 
         if (other.rigidbody.CompareTag("PlayerProjectile")) {
+            other.gameObject.GetComponentInParent<PlayerProjectile>().Enabled = false;
             Debug.LogFormat("BossHealthCollider OnCollisionEnter2D player projectile");
             HitEvent?.Invoke();
         }
