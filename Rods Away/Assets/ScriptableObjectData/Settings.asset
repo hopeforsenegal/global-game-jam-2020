@@ -37,5 +37,5 @@ MonoBehaviour:
   bossHurt: {fileID: 8300000, guid: e8b96672543884aa0b910e4ffb34b627, type: 3}
   bossLose: {fileID: 8300000, guid: eb2572b07455c40eb8ea8383c3bb5224, type: 3}
   doubleJumpImage: {fileID: 21300000, guid: 564f1186b3b1243a49a3e0371732e557, type: 3}
-  dashJumpImage: {fileID: 0}
-  shootJumpImage: {fileID: 0}
+  dashJumpImage: {fileID: 21300000, guid: 66125ed6c45bd4cd7b6956be282eea85, type: 3}
+  shootJumpImage: {fileID: 21300000, guid: cba0d12d09eec469890319e9c985b5ed, type: 3}
