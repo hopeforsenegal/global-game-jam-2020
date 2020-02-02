@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
             {
                 float jumpVelocity = 30f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
+                JumpEvent?.Invoke();
             }
             else if (canDoubleJump && unlockDoubleJump)
             {
