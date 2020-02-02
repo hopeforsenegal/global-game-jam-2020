@@ -543,7 +543,6 @@ GameObject:
   - component: {fileID: 732327669}
   - component: {fileID: 732327668}
   - component: {fileID: 732327667}
-  - component: {fileID: 732327666}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -551,21 +550,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &732327666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732327665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d737db80fea4dc7bc542e7abfdab98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idleTimer: 0.5
-  m_PlayerController: {fileID: 732327668}
-  m_PlayerAnimator: {fileID: 1287473125}
 --- !u!114 &732327667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +583,7 @@ MonoBehaviour:
   wallsLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  direction: 1
   isMoving: 0
   meleeCollider: {fileID: 655311006}
 --- !u!50 &732327669
@@ -987,6 +972,7 @@ GameObject:
   - component: {fileID: 1287473127}
   - component: {fileID: 1287473126}
   - component: {fileID: 1287473125}
+  - component: {fileID: 1287473131}
   m_Layer: 10
   m_Name: Animator
   m_TagString: Untagged
@@ -1110,11 +1096,26 @@ Transform:
   m_GameObject: {fileID: 1287473124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: -0.0538, z: 0}
-  m_LocalScale: {x: 0.021921042, y: 0.01815259, z: 1}
+  m_LocalScale: {x: 0.02192104, y: 0.01815259, z: 1}
   m_Children: []
   m_Father: {fileID: 732327672}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1287473131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287473124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d737db80fea4dc7bc542e7abfdab98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleTimer: 0.5
+  m_PlayerController: {fileID: 732327668}
+  m_PlayerAnimator: {fileID: 1287473125}
 --- !u!1 &1461004885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,6 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: af985783e13114aba80a618b75a59972, type: 2}
+  m_GameController: {fileID: 0}
 --- !u!4 &1461004888
 Transform:
   m_ObjectHideFlags: 0

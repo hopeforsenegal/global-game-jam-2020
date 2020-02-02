@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private bool attacking = false;
     private bool dashing = false;
     private bool shooting = false;
-    private bool direction = true;
+    public bool direction = true;
     private bool canDoubleJump;
     public bool isMoving;
 

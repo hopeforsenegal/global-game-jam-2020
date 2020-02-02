@@ -32,6 +32,7 @@ public class PlayerRenderer : MonoBehaviour
     #region Private Member Variables
 
     private float m_CurrentTimer;
+    private bool m_LastDirection;
 
     #endregion
 
@@ -43,6 +44,7 @@ public class PlayerRenderer : MonoBehaviour
         Debug.Assert(m_PlayerAnimator != null, "m_PlayerAnimator not set");
 
         m_PlayerAnimator.Idle();
+        m_LastDirection = m_PlayerController.direction;
 
         m_CurrentTimer = Time.time;
 
@@ -73,6 +75,11 @@ public class PlayerRenderer : MonoBehaviour
         if (m_PlayerController.isMoving) {
             m_PlayerAnimator.Run();
         }
+
+        if (m_PlayerController.direction != m_LastDirection) {
+            m_LastDirection = m_PlayerController.direction;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
+        }
     }
 
     #endregion
@@ -96,12 +103,6 @@ public class PlayerRenderer : MonoBehaviour
     private void OnDie()
     {
         m_PlayerAnimator.Die();
-        m_CurrentTimer = Time.time;
-    }
-
-    private void OnMove()
-    {
-        m_PlayerAnimator.Run();
         m_CurrentTimer = Time.time;
     }
 
