@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
             AttackEvent?.Invoke(AttackPattern.Projectile);
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && !direction) {
+        if (Input.GetAxis("Horizontal") > 0.1f && !direction) {
             //Debug.Log("D key was pressed.");
             direction = true;
             meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && direction) {
+        if (Input.GetAxis("Horizontal") < -0.1f && direction) {
             //Debug.Log("A key was pressed.");
             direction = false;
             meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);

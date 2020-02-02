@@ -34,6 +34,7 @@ public class PlayerRenderer : MonoBehaviour
 
     private float m_CurrentTimer;
     private bool m_LastDirection;
+    private bool m_Dead;
 
     #endregion
 
@@ -69,6 +70,9 @@ public class PlayerRenderer : MonoBehaviour
 
     protected void Update()
     {
+        if (m_Dead)
+            return;
+
         if (m_CurrentTimer + idleTimer <= Time.time && !m_PlayerController.isMoving) {
             m_CurrentTimer = Time.time;
             m_PlayerAnimator.Idle();
@@ -105,11 +109,13 @@ public class PlayerRenderer : MonoBehaviour
 
     private void OnDie()
     {
+        m_Dead = true;
         OnDieAction(NotifyGameControllerDeadDead);
     }
 
     private void OnRespawn()
     {
+        m_Dead = false;
         m_PlayerAnimator.Idle();
     }
 
