@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
             canDoubleJump = true;
         }
 
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Fire2")) {
             if (IsGrounded()) {
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
                 JumpEvent?.Invoke();
@@ -147,8 +147,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !attacking) {
-            //Debug.LogFormat("Fire1");
+        if (Input.GetButtonDown("Fire3") && !attacking) {
+            //Debug.LogFormat("Fire3");
             attackTimer = Time.time;
             attacking = true;
             m_PlayerMelee.Launch(transform.position, m_PlayerMelee.speed, direction);
@@ -161,8 +161,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire2") && unlockDash && !dashing && !attacking) {
-            //Debug.LogFormat("Fire2");
+        if (Input.GetButtonDown("Jump") && unlockDash && !dashing && !attacking) {
+            //Debug.LogFormat("Jump");
             dashTimer = Time.time;
             dashing = true;
 
@@ -193,8 +193,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire3") && unlockShooting && !shooting) {
-            //Debug.LogFormat("Fire3");
+        if (Input.GetButtonDown("Fire1") && unlockShooting && !shooting) {
+            //Debug.LogFormat("Fire1");
             m_PlayerProjectile.Launch(transform.position, m_PlayerProjectile.speed, direction);
             shootTimer = Time.time;
             shooting = true;
