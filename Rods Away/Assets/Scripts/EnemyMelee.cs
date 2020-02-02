@@ -28,6 +28,10 @@ public class EnemyMelee : MonoBehaviour
 
     #region Inspectables
 
+
+    public float speed;
+    public bool moveLeft;
+
     [SerializeField]
     private BoxCollider2D m_Collider = default;
 
@@ -49,9 +53,23 @@ public class EnemyMelee : MonoBehaviour
         Debug.Assert(m_Renderer != null, "m_Renderer not set");
     }
 
+    protected void Update()
+    {
+        var direction = moveLeft ? Vector3.right : Vector3.left;
+        transform.Translate(direction * (Time.deltaTime * speed), Space.World);
+    }
+
     #endregion
 
     #region Public Methods
+
+    public void Launch(Vector3 location, float speed, bool moveLeft)
+    {
+        Enabled = true;
+        transform.SetPositionAndRotation(location, Quaternion.identity);
+        this.speed = speed;
+        this.moveLeft = moveLeft;
+    }
 
     #endregion
 

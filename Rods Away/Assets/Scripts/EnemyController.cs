@@ -99,7 +99,7 @@ public class EnemyController : MonoBehaviour
     {
         switch (attackType) {
             case AttackPattern.Melee:
-                m_EnemyMelee.Enabled = true;
+                m_EnemyMelee.Launch(m_ProjectileStartLocation, m_EnemyMelee.speed, m_EnemyMelee.moveLeft);
                 break;
             case AttackPattern.Projectile:
                 m_EnemyProjectile.Launch(m_ProjectileStartLocation, m_EnemyProjectile.speed, m_EnemyProjectile.moveLeft);
