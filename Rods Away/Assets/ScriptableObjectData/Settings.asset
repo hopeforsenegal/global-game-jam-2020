@@ -27,12 +27,14 @@ MonoBehaviour:
   playerMove: {fileID: 8300000, guid: 833561e30408e45ffa51fa7b4ee3c0f1, type: 3}
   playerDie: {fileID: 8300000, guid: f5a65dc30f47d494ca305a03563684c7, type: 3}
   playerRespawn: {fileID: 8300000, guid: eefcdada7afd54a839b0fb10b3435452, type: 3}
-  enemyAttackMelee: {fileID: 0}
-  enemyAttackProjectile: {fileID: 0}
-  enemyHurt: {fileID: 0}
+  enemyAttackMelee: {fileID: 8300000, guid: c6527f79d31da46ce80f8a79beae6718, type: 3}
+  enemyAttackProjectile: {fileID: 8300000, guid: c6527f79d31da46ce80f8a79beae6718,
+    type: 3}
+  enemyHurt: {fileID: 8300000, guid: db127251da57847729977c5a8caf35cf, type: 3}
   bossAttackMelee: {fileID: 0}
-  bossAttackProjectile: {fileID: 0}
-  bossHurt: {fileID: 0}
+  bossAttackProjectile: {fileID: 8300000, guid: c61084a61a87e48f992450ddf65e55f6,
+    type: 3}
+  bossHurt: {fileID: 8300000, guid: e8b96672543884aa0b910e4ffb34b627, type: 3}
   bossLose: {fileID: 8300000, guid: eb2572b07455c40eb8ea8383c3bb5224, type: 3}
   doubleJumpImage: {fileID: 21300000, guid: 564f1186b3b1243a49a3e0371732e557, type: 3}
   dashJumpImage: {fileID: 0}
