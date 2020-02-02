@@ -40,7 +40,7 @@ public class GameSFXPlayer : MonoBehaviour
 
         m_GameController = FindObjectOfType<GameController>();
         if (m_GameController != null) {
-            m_GameController.PlayerDefeatedEvent += OnPlayerDefeatedEvent;
+            m_GameController.PlayerDefeatedEvent += OnPlayerRespawn;
             m_GameController.BossDefeatedEvent += OnBossDefeatedEvent;
         }
         m_BossController = FindObjectOfType<BossController>();
@@ -61,6 +61,7 @@ public class GameSFXPlayer : MonoBehaviour
         if (m_PlayerController != null) {
             m_PlayerController.AttackEvent += OnPlayerAttack;
             m_PlayerController.PowerUpEvent += OnPlayerPowerUp;
+            m_PlayerController.DieEvent += OnDie;
             m_PlayerController.DashEvent += OnPlayerDash;
             m_PlayerController.JumpEvent += OnPlayerJump;
         }
@@ -81,13 +82,14 @@ public class GameSFXPlayer : MonoBehaviour
             m_BossController.HurtEvent -= OnBossHurt;
         }
         if (m_GameController != null) {
-            m_GameController.PlayerDefeatedEvent -= OnPlayerDefeatedEvent;
+            m_GameController.PlayerDefeatedEvent -= OnPlayerRespawn;
             m_GameController.BossDefeatedEvent -= OnBossDefeatedEvent;
         }
         if (m_PlayerController != null) {
             m_PlayerController.AttackEvent -= OnPlayerAttack;
             m_PlayerController.PowerUpEvent -= OnPlayerPowerUp;
             m_PlayerController.DashEvent -= OnPlayerDash;
+            m_PlayerController.DieEvent -= OnDie;
             m_PlayerController.JumpEvent -= OnPlayerJump;
         }
     }
@@ -119,9 +121,14 @@ public class GameSFXPlayer : MonoBehaviour
         PlayAudio(settings.bossLose);
     }
 
-    private void OnPlayerDefeatedEvent()
+    private void OnPlayerRespawn()
     {
-        PlayAudio(settings.playerDefeated);
+        PlayAudio(settings.playerRespawn);
+    }
+
+    private void OnDie()
+    {
+        PlayAudio(settings.playerDie);
     }
 
     private void OnEnemyDie()

@@ -91,6 +91,7 @@ namespace MoonlitSystem.Animators
 
         public void Loop(string skin, string loop)
         {
+            m_MeshRenderer.enabled = true;
             if (m_CurrentAnimation != loop) {
                 //Debug.LogFormat("[StandardAnimator::Loop] skin:'{0}' loop:'{1}'", skin, loop);
                 m_CurrentAnimation = loop;
@@ -101,7 +102,6 @@ namespace MoonlitSystem.Animators
                 var entry = m_SkeletonAnimation.AnimationState.SetAnimation(0, loop, true);
                 entry.TimeScale = 1;
                 m_SkeletonAnimation.AnimationState.TimeScale = 1;
-                m_MeshRenderer.enabled = true;
             }
         }
 
@@ -147,6 +147,7 @@ namespace MoonlitSystem.Animators
         {
             m_SkeletonAnimation.AnimationState.Complete -= OnEnd;
             m_OnEndEvent?.Invoke();
+            m_OnEndEvent = null;
             if (!string.IsNullOrEmpty(m_LoopAnimation)) {
                 m_MeshRenderer.enabled = true;
                 m_SkeletonAnimation.AnimationState.SetAnimation(0, m_LoopAnimation, true);

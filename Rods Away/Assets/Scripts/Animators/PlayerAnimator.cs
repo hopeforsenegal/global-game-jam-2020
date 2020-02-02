@@ -1,4 +1,5 @@
 ﻿
+using System;
 using MoonlitSystem.Animators;
 using UnityEngine;
 
@@ -43,20 +44,23 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Idle()
     {
-        Debug.LogFormat("Idle");
+        //Debug.LogFormat("Idle");
         m_StandardAnimator.Loop(string.Empty, "idle");
     }
 
     public void Run()
     {
-        Debug.LogFormat("Run");
+        //Debug.LogFormat("Run");
         m_StandardAnimator.Loop(string.Empty, "run1");
     }
 
-    public void Die()
+    public void Die(Action onDieAnimationComplete)
     {
         Debug.LogFormat("Die");
-        m_StandardAnimator.Play(string.Empty, "die");
+        m_StandardAnimator.Play(string.Empty, "die", string.Empty, ()=> {
+            m_StandardAnimator.Clear();
+            onDieAnimationComplete?.Invoke();
+        });
     }
 
     public void Jump()

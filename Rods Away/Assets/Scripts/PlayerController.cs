@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public Action<AttackPattern> AttackEvent;
     public Action DieEvent;
+    public Action RespawnEvent;
 
     public Action PowerUpEvent;
     public Action DashEvent;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 10;
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
+    private bool isDead;
 
 
     public GameObject meleeCollider;
@@ -93,6 +95,13 @@ public class PlayerController : MonoBehaviour
         m_PlayerHealthCollider.PlayerHitEvent += OnHit;
     }
 
+    public void Respawn(Vector3 location)
+    {
+        transform.SetPositionAndRotation(location, Quaternion.identity);
+        isDead = false;
+        RespawnEvent?.Invoke();
+    }
+
     protected void OnDestroy()
     {
         foreach (var checkpoint in checkpoints) {
@@ -104,6 +113,9 @@ public class PlayerController : MonoBehaviour
 
     protected void Update()
     {
+        if (isDead)
+            return;
+
         float move = Input.GetAxis("Horizontal") * moveSpeed;
 
         transform.Translate(Vector3.right * (Time.deltaTime * move), Space.World);
@@ -253,6 +265,7 @@ public class PlayerController : MonoBehaviour
     private void OnHit()
     {
         Debug.LogFormat("Player Hit");
+        isDead = true;
         DieEvent?.Invoke();
     }
 

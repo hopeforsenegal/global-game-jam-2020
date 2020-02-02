@@ -89,7 +89,7 @@ public class PlayerRespawner : MonoBehaviour
 
     private void Respawn()
     {
-        m_PlayerController.transform.SetPositionAndRotation(m_LastSpawnLocation, Quaternion.identity);
+        m_PlayerController.Respawn(m_LastSpawnLocation);
     }
 
     private void UpdateCheckPoint(Vector3 location)

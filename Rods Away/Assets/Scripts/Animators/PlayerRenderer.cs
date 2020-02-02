@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -53,10 +54,12 @@ public class PlayerRenderer : MonoBehaviour
         m_PlayerController.DieEvent += OnDie;
         m_PlayerController.JumpEvent += OnJump;
         m_PlayerController.PowerUpEvent += OnPowerUp;
+        m_PlayerController.RespawnEvent += OnRespawn;
     }
 
     protected void OnDestroy()
     {
+        m_PlayerController.RespawnEvent -= OnRespawn;
         m_PlayerController.AttackEvent -= OnAttack;
         m_PlayerController.DashEvent -= OnDash;
         m_PlayerController.DieEvent -= OnDie;
@@ -102,7 +105,24 @@ public class PlayerRenderer : MonoBehaviour
 
     private void OnDie()
     {
-        m_PlayerAnimator.Die();
+        OnDieAction(NotifyGameControllerDeadDead);
+    }
+
+    private void OnRespawn()
+    {
+        m_PlayerAnimator.Idle();
+    }
+
+    private void NotifyGameControllerDeadDead()
+    {
+        if (GameController.TryGetInstance(out GameController gameController)) {
+            gameController.NotifyPlayerWasDefeated();
+        }
+    }
+
+    private void OnDieAction(Action onDieAnimationComplete)
+    {
+        m_PlayerAnimator.Die(onDieAnimationComplete);
         m_CurrentTimer = Time.time;
     }
 

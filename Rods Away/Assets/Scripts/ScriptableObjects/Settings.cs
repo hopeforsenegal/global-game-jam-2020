@@ -18,7 +18,8 @@ public class Settings : ScriptableObject
     public AudioClip playerDash;
     public AudioClip playerJump;
     public AudioClip playerMove;
-    public AudioClip playerDefeated;
+    public AudioClip playerDie;
+    public AudioClip playerRespawn;
 
     [Header("Enemy SFX")]
     public AudioClip enemyAttackMelee;

@@ -7,6 +7,22 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public class GameController : MonoBehaviour
 {
+    #region Singleton
+
+    public static GameController Instance
+    {
+        get;
+        private set;
+    }
+
+    public static bool TryGetInstance(out GameController controller)
+    {
+        controller = Instance;
+        return controller != null;
+    }
+
+    #endregion
+
     #region Enums and Constants
 
     #endregion
@@ -37,6 +53,16 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region Monobehaviours
+
+    protected void Awake()
+    {
+        if (Instance == null) {
+            Instance = this;
+        } else if (Instance != this) {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     protected void Start()
     {
