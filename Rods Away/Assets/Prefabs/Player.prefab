@@ -187,9 +187,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830335332590647372}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.43, y: -2, z: 0}
-  m_LocalScale: {x: 5, y: 10, z: 1}
+  m_LocalScale: {x: 4, y: 8, z: 1}
   m_Children:
   - {fileID: 830335330912393419}
   m_Father: {fileID: 0}
@@ -290,7 +290,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &830335332590647373
 MonoBehaviour:
@@ -304,10 +304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da88d2cf7fd424668a95c9a5d7783eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockDoubleJump: 1
-  unlockDash: 1
-  unlockShooting: 1
-  jumpVelocity: 30
+  unlockDoubleJump: 0
+  unlockDash: 0
+  unlockShooting: 0
+  jumpVelocity: 20
   shootTimer: 3
   m_PlayerProjectile: {fileID: 0}
   m_PlayerMelee: {fileID: 0}
