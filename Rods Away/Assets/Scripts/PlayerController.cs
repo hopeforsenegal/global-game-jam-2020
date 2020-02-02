@@ -7,9 +7,19 @@ public class PlayerController : MonoBehaviour
 {
     #region Enums and Constants
 
+    public enum AttackPattern
+    {
+        Melee,
+        Projectile
+    }
+
     #endregion
 
     #region Events
+
+    public Action<AttackPattern> AttackEvent;
+    public Action HurtEvent;
+    public Action DieEvent;
 
     #endregion
 
@@ -18,8 +28,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Inspectables
-
-    public Action OnDead;
 
     [SerializeField]
     private float shootTimer = 20.0f;
