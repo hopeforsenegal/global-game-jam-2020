@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacf43b975c5a4784b70392af1ea0b07, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  gameOver: {fileID: 0}
-  playerWonScreen: {fileID: 0}
-  mainMenu: {fileID: 0}
-  backgroundMusic: {fileID: 8300000, guid: e986056f914f4974896a49527ca80041, type: 3}
+  playerWonScreenMusicTrack: {fileID: 0}
+  mainMenuMusicTrack: {fileID: 0}
+  backgroundMusicTrack: {fileID: 8300000, guid: 532e417ffa3f95747908419a00be3780,
+    type: 3}
   playerWallBlock: {fileID: 0}
   playerThroughWall: {fileID: 0}
   playerAttackMelee: {fileID: 0}
@@ -25,9 +25,10 @@ MonoBehaviour:
   playerJump: {fileID: 0}
   playerMove: {fileID: 0}
   enemyAttackMelee: {fileID: 0}
-  enemyAttackRanged: {fileID: 0}
+  enemyAttackProjectile: {fileID: 0}
+  enemyHurt: {fileID: 0}
   bossAttackMelee: {fileID: 0}
-  bossAttackRanged: {fileID: 0}
+  bossAttackProjectile: {fileID: 0}
   bossHurt: {fileID: 0}
   bossWins: {fileID: 0}
   bossLose: {fileID: 0}

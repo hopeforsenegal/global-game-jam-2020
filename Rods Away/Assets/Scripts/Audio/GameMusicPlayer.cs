@@ -20,24 +20,25 @@ public class GameMusicPlayer : MonoBehaviour
 
 	public Settings settings;
 
+	[SerializeField]
+	private GameController m_GameController;
+
 	#endregion
 
 	#region Private Member Variables
 
-	private GameController m_GameController;
+	#endregion
 
-    #endregion
+	#region Monobehaviours
 
-    #region Monobehaviours
-
-    protected void Start()
+	protected void Start()
     {
-		var gameController = FindObjectOfType<GameController>();
-        if(gameController != null) {
-			gameController.InitializedEvent += OnGameInitialized;
-			gameController.BossDefeatedEvent += OnGameOver;
+        if(m_GameController == null) {
+			m_GameController = FindObjectOfType<GameController>();
 		}
-    }
+		m_GameController.InitializedEvent += OnGameInitialized;
+		m_GameController.BossDefeatedEvent += OnGameOver;
+	}
 
     #endregion
 

@@ -1365,6 +1365,7 @@ MonoBehaviour:
   wallsLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  isMoving: 0
   meleeCollider: {fileID: 1294690904}
 --- !u!50 &1188439816
 Rigidbody2D:
@@ -2209,10 +2210,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e986056f914f4974896a49527ca80041, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

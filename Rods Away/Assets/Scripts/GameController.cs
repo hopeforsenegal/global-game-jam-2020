@@ -40,13 +40,13 @@ public class GameController : MonoBehaviour
 
     protected void Start()
     {
+        StartCoroutine(Initialize());
+
         Debug.Assert(playerController != null, "playerController not set");
         Debug.Assert(bossController != null, "bossController not set");
         Debug.Assert(enemyControllers != null && enemyControllers.Length > 0, "enemyControllers not set");
 
         bossController.DieEvent += OnBossDead;
-
-        InitializedEvent?.Invoke();
     }
 
     protected void OnDestroy()
@@ -81,6 +81,13 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region Private Methods
+
+    private IEnumerator Initialize()
+    {
+        Debug.Log("Initialize");
+        yield return new WaitForSeconds(0.01f);
+        InitializedEvent?.Invoke();
+    }
 
     private void QuitGame()
     {
