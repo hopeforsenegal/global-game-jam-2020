@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     #region Inspectables
 
     [SerializeField]
+    float jumpVelocity = 30f;
+
+    [SerializeField]
     private float shootTimer = 20.0f;
 
     [SerializeField]
@@ -66,13 +69,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject meleeCollider;
 
-    private Checkpoint[] checkpoints;
-
     #endregion
 
     #region Private Member Variables
-
-    private Vector3 m_ProjectileStartLocation;
 
     #endregion
 
@@ -86,12 +85,6 @@ public class PlayerController : MonoBehaviour
 
     protected void Start()
     {
-        checkpoints = FindObjectsOfType<Checkpoint>();
-        foreach (var checkpoint in checkpoints) {
-            if (checkpoint != null) {
-                checkpoint.OnSet += UpdateCheckPoint;
-            }
-        }
         m_PlayerHealthCollider.PlayerHitEvent += OnHit;
     }
 
@@ -104,11 +97,7 @@ public class PlayerController : MonoBehaviour
 
     protected void OnDestroy()
     {
-        foreach (var checkpoint in checkpoints) {
-            if (checkpoint != null) {
-                checkpoint.OnSet -= UpdateCheckPoint;
-            }
-        }
+        m_PlayerHealthCollider.PlayerHitEvent -= OnHit;
     }
 
     protected void Update()
@@ -129,13 +118,11 @@ public class PlayerController : MonoBehaviour
         {
             if (IsGrounded())
             {
-                float jumpVelocity = 30f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
                 JumpEvent?.Invoke();
             }
             else if (canDoubleJump && unlockDoubleJump)
             {
-                float jumpVelocity = 30f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
                 canDoubleJump = false;
             }
@@ -255,11 +242,6 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.min, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformsLayerMask);
         //Debug.Log(raycastHit2d.collider);
         return raycastHit2d.collider != null;
-    }
-
-    private void UpdateCheckPoint(Vector3 location)
-    {
-
     }
 
     private void OnHit()
