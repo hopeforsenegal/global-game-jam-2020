@@ -50,7 +50,6 @@ public class PlayerRenderer : MonoBehaviour
         m_PlayerController.DashEvent += OnDash;
         m_PlayerController.DieEvent += OnDie;
         m_PlayerController.JumpEvent += OnJump;
-        m_PlayerController.MoveEvent += OnMove;
         m_PlayerController.PowerUpEvent += OnPowerUp;
     }
 
@@ -60,16 +59,19 @@ public class PlayerRenderer : MonoBehaviour
         m_PlayerController.DashEvent -= OnDash;
         m_PlayerController.DieEvent -= OnDie;
         m_PlayerController.JumpEvent -= OnJump;
-        m_PlayerController.MoveEvent -= OnMove;
         m_PlayerController.PowerUpEvent -= OnPowerUp;
     }
 
     protected void Update()
     {
-        if (m_CurrentTimer + idleTimer <= Time.time) {
+        if (m_CurrentTimer + idleTimer <= Time.time && !m_PlayerController.isMoving) {
             m_CurrentTimer = Time.time;
             m_PlayerAnimator.Idle();
             return;
+        }
+
+        if (m_PlayerController.isMoving) {
+            m_PlayerAnimator.Run();
         }
     }
 

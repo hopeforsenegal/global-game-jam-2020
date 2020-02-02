@@ -47,6 +47,7 @@ namespace MoonlitSystem.Animators
         private MeshRenderer m_MeshRenderer;
         private Action m_OnEndEvent;
         private string m_LoopAnimation;
+        private string m_CurrentAnimation;
 
         #endregion
 
@@ -90,15 +91,18 @@ namespace MoonlitSystem.Animators
 
         public void Loop(string skin, string loop)
         {
-            //Debug.LogFormat("[StandardAnimator::Loop] skin:'{0}' loop:'{1}'", skin, loop);
+            if (m_CurrentAnimation != loop) {
+                //Debug.LogFormat("[StandardAnimator::Loop] skin:'{0}' loop:'{1}'", skin, loop);
+                m_CurrentAnimation = loop;
 
-            SetSkin(skin);
-            m_SkeletonAnimation.Skeleton.SetSlotsToSetupPose(); // 2. Make sure it refreshes.
-            m_SkeletonAnimation.AnimationState.Apply(m_SkeletonAnimation.Skeleton); // 3. Make sure the attachments from your currently playing animation are applied.
-            var entry = m_SkeletonAnimation.AnimationState.SetAnimation(0, loop, true);
-            entry.TimeScale = 1;
-            m_SkeletonAnimation.AnimationState.TimeScale = 1;
-            m_MeshRenderer.enabled = true;
+                SetSkin(skin);
+                m_SkeletonAnimation.Skeleton.SetSlotsToSetupPose(); // 2. Make sure it refreshes.
+                m_SkeletonAnimation.AnimationState.Apply(m_SkeletonAnimation.Skeleton); // 3. Make sure the attachments from your currently playing animation are applied.
+                var entry = m_SkeletonAnimation.AnimationState.SetAnimation(0, loop, true);
+                entry.TimeScale = 1;
+                m_SkeletonAnimation.AnimationState.TimeScale = 1;
+                m_MeshRenderer.enabled = true;
+            }
         }
 
         public void Still(string skin, string still)

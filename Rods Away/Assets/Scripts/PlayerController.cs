@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour
     public Action PowerUpEvent;
     public Action DashEvent;
     public Action JumpEvent;
-    public Action IdleEvent;
-    public Action MoveEvent;
 
     #endregion
 
@@ -48,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private bool shooting = false;
     private bool direction = true;
     private bool canDoubleJump;
+    public bool isMoving;
 
     private bool unlockDoubleJump = true;
     private bool unlockDash = true;
@@ -207,7 +206,6 @@ public class PlayerController : MonoBehaviour
             direction = true;
             meleeCollider.transform.localPosition = new Vector3(0.1f, 0.01f, 0.0f);
 
-            MoveEvent?.Invoke();
             return;
         }
 
@@ -217,9 +215,10 @@ public class PlayerController : MonoBehaviour
             direction = false;
             meleeCollider.transform.localPosition = new Vector3(-0.1f, 0.01f, 0.0f);
 
-            MoveEvent?.Invoke();
             return;
         }
+
+        isMoving = Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1;
     }
 
     #endregion
