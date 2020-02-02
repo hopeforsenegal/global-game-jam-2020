@@ -1116,12 +1116,8 @@ GameObject:
   m_Component:
   - component: {fileID: 610610845}
   - component: {fileID: 610610846}
-<<<<<<< Updated upstream
   - component: {fileID: 610610847}
-  m_Layer: 0
-=======
   m_Layer: 11
->>>>>>> Stashed changes
   m_Name: Collider
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
