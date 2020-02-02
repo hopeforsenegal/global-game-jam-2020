@@ -156,7 +156,7 @@ public class GameSFXPlayer : MonoBehaviour
 
     private void OnPlayerPowerUp(Vector3 _, PowerUpPiece.Ability __)
     {
-        PlayAudio(settings.playerPowerUp);
+        PlayAudio(settings.playerPowerUp, true);
     }
 
     private void OnPlayerDash()

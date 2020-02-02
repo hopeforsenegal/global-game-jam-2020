@@ -78,7 +78,7 @@ public class PowerUpPiece : MonoBehaviour
 
     private void OnPowerUpHit(Vector3 location)
     {
-        Debug.LogFormat("PowerUpPiece OnPowerUpHit player");
+        //Debug.LogFormat("Piece of type collected: {0}", m_Ability);
         Enabled = false;
         PowerUpHitEvent?.Invoke(location, m_Ability);
     }

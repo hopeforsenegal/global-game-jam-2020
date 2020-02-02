@@ -95,7 +95,6 @@ public class GameController : MonoBehaviour
 
     private IEnumerator Initialize()
     {
-        Debug.Log("Initialize");
         yield return new WaitForSeconds(0.01f);
         InitializedEvent?.Invoke();
     }

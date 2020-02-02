@@ -55,7 +55,7 @@ public class PowerUpPieceCollider : MonoBehaviour
         //Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D tag:{0}", other.gameObject.tag);
 
         if (other.gameObject.CompareTag("Player")) {
-            Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D player");
+            //Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D player");
             PowerUpHitEvent?.Invoke(transform.position);
         }
     }

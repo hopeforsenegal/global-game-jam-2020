@@ -4,41 +4,51 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class GameMusicPlayer : MonoBehaviour
 {
-	#region Enums and Constants
+    #region Enums and Constants
 
-	#endregion
+    #endregion
 
-	#region Events
+    #region Events
 
-	#endregion
+    #endregion
 
-	#region Properties
+    #region Properties
 
-	#endregion
+    #endregion
 
-	#region Inspectables
+    #region Inspectables
 
-	public Settings settings;
+    public Settings settings;
 
-	[SerializeField]
-	private GameController m_GameController;
+    [SerializeField]
+    private GameController m_GameController;
 
-	#endregion
+    #endregion
 
-	#region Private Member Variables
+    #region Private Member Variables
 
-	#endregion
+    #endregion
 
-	#region Monobehaviours
+    #region Monobehaviours
 
-	protected void Start()
+    protected void Start()
     {
-        if(m_GameController == null) {
-			m_GameController = FindObjectOfType<GameController>();
-		}
-		m_GameController.InitializedEvent += OnGameInitialized;
-		m_GameController.BossDefeatedEvent += OnGameOver;
-	}
+        if (m_GameController == null) {
+            m_GameController = FindObjectOfType<GameController>();
+        }
+        if (m_GameController != null) {
+            m_GameController.InitializedEvent += OnGameInitialized;
+            m_GameController.BossDefeatedEvent += OnGameOver;
+        }
+    }
+
+    protected void OnDestroy()
+    {
+        if (m_GameController != null) {
+            m_GameController.InitializedEvent += OnGameInitialized;
+            m_GameController.BossDefeatedEvent += OnGameOver;
+        }
+    }
 
     #endregion
 
@@ -50,21 +60,21 @@ public class GameMusicPlayer : MonoBehaviour
 
     private void OnGameInitialized()
     {
-		Debug.LogFormat("OnGameInitialized");
-		PlayAudio(settings.backgroundMusicTrack);
+        Debug.LogFormat("OnGameInitialized");
+        PlayAudio(settings.backgroundMusicTrack);
     }
 
     private void OnGameOver()
-	{
-		PlayAudio(settings.playerWonScreenMusicTrack);
-	}
+    {
+        PlayAudio(settings.playerWonScreenMusicTrack);
+    }
 
-	private void PlayAudio(AudioClip audioClip)
-	{
-		if (AudioPlayer.TryGetInstance(out AudioPlayer audioPlayer)) {
-			audioPlayer.PlayMusic(audioClip);
-		}
-	}
+    private void PlayAudio(AudioClip audioClip)
+    {
+        if (AudioPlayer.TryGetInstance(out AudioPlayer audioPlayer)) {
+            audioPlayer.PlayMusic(audioClip);
+        }
+    }
 
-	#endregion
+    #endregion
 }

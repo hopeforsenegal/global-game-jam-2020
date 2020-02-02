@@ -56,7 +56,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Die(Action onDieAnimationComplete)
     {
-        Debug.LogFormat("Die");
+        //Debug.LogFormat("Die");
         m_StandardAnimator.Play(string.Empty, "die", string.Empty, ()=> {
             m_StandardAnimator.Clear();
             onDieAnimationComplete?.Invoke();

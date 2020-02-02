@@ -44,10 +44,10 @@ public class PlayerHealthCollider : MonoBehaviour
 
         if (other.gameObject.CompareTag("EnemyProjectile")) {
             other.gameObject.GetComponentInParent<EnemyProjectile>().Enabled = false;
-            Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy projectile");
+            //Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy projectile");
             PlayerHitEvent?.Invoke();
         } else if (other.gameObject.CompareTag("Enemy")) {
-            Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy");
+            //Debug.LogFormat("PlayerHealthCollider OnCollisionEnter2D enemy");
             PlayerHitEvent?.Invoke();
         }
     }
