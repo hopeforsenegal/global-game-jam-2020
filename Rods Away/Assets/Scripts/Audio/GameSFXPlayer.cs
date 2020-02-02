@@ -41,12 +41,12 @@ public class GameSFXPlayer : MonoBehaviour
         m_GameController = FindObjectOfType<GameController>();
         if (m_GameController != null) {
             m_GameController.PlayerDefeatedEvent += OnPlayerRespawn;
-            m_GameController.BossDefeatedEvent += OnBossDefeatedEvent;
         }
         m_BossController = FindObjectOfType<BossController>();
         if (m_BossController != null) {
             m_BossController.AttackEvent += OnBossAttack;
             m_BossController.HurtEvent += OnBossHurt;
+            m_BossController.DieEvent += OnBossDie;
         }
         m_EnemyControllers = FindObjectsOfType<EnemyController>();
         if (m_EnemyControllers != null) {
@@ -80,10 +80,10 @@ public class GameSFXPlayer : MonoBehaviour
         if (m_BossController != null) {
             m_BossController.AttackEvent -= OnBossAttack;
             m_BossController.HurtEvent -= OnBossHurt;
+            m_BossController.DieEvent -= OnBossDie;
         }
         if (m_GameController != null) {
             m_GameController.PlayerDefeatedEvent -= OnPlayerRespawn;
-            m_GameController.BossDefeatedEvent -= OnBossDefeatedEvent;
         }
         if (m_PlayerController != null) {
             m_PlayerController.AttackEvent -= OnPlayerAttack;
@@ -116,9 +116,9 @@ public class GameSFXPlayer : MonoBehaviour
         PlayAudio(settings.bossHurt);
     }
 
-    private void OnBossDefeatedEvent()
+    private void OnBossDie()
     {
-        PlayAudio(settings.bossLose);
+        PlayAudio(settings.bossLose, true);
     }
 
     private void OnPlayerRespawn()
@@ -145,7 +145,7 @@ public class GameSFXPlayer : MonoBehaviour
         }
     }
 
-    private void  OnPlayerAttack(PlayerController.AttackPattern attackPattern)
+    private void OnPlayerAttack(PlayerController.AttackPattern attackPattern)
     {
         if (attackPattern == PlayerController.AttackPattern.Melee) {
             PlayAudio(settings.playerAttackMelee);
@@ -154,26 +154,26 @@ public class GameSFXPlayer : MonoBehaviour
         }
     }
 
-    private void  OnPlayerPowerUp(Vector3 location)
+    private void OnPlayerPowerUp(Vector3 location)
     {
         PlayAudio(settings.playerPowerUp);
     }
 
-    private void  OnPlayerDash()
+    private void OnPlayerDash()
     {
         PlayAudio(settings.playerDash);
     }
 
-    private void  OnPlayerJump()
+    private void OnPlayerJump()
     {
         PlayAudio(settings.playerJump);
     }
 
 
-    private void PlayAudio(AudioClip audioClip)
+    private void PlayAudio(AudioClip audioClip, bool overrideAudio = false)
     {
         if (AudioPlayer.TryGetInstance(out AudioPlayer audioPlayer)) {
-            audioPlayer.PlaySound(audioClip);
+            audioPlayer.PlaySound(audioClip, overrideAudio);
         }
     }
 

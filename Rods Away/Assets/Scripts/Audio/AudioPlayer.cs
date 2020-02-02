@@ -107,7 +107,7 @@ public class AudioPlayer : MonoBehaviour
         }
 	}
 
-	public void PlaySound(AudioClip audio)
+	public void PlaySound(AudioClip audio, bool overrideAudio = false)
 	{
 		bool soundPlayed = false;
         for (int i = 1; i < m_AudioSources.Length; i++)
@@ -121,7 +121,7 @@ public class AudioPlayer : MonoBehaviour
 				break;
 			}
 		}
-		if (!soundPlayed)
+		if (!soundPlayed && overrideAudio)
 		{
 			if (m_AudioSources != null && m_AudioSources.Length > 0)
 			{

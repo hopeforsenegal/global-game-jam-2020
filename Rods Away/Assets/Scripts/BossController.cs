@@ -133,6 +133,7 @@ public class BossController : MonoBehaviour
         if (m_CurrentHealth <= 0) {
             m_Health.Viewable(false);
             DieEvent?.Invoke();
+            m_EnemyHealthCollider.HitEvent -= OnHit;
         } else {
             m_Health.Viewable(true);
             m_Health.health = m_CurrentHealth;

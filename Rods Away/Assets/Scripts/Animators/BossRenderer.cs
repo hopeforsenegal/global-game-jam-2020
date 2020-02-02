@@ -81,6 +81,9 @@ public class BossRenderer : MonoBehaviour
 
     private void OnAttack(BossController.AttackPattern attackPattern)
     {
+        if (m_Dead)
+            return;
+
         if (attackPattern == BossController.AttackPattern.Melee) {
             m_BossAnimator.Melee();
             m_CurrentTimer = Time.time;
@@ -96,16 +99,10 @@ public class BossRenderer : MonoBehaviour
         OnDieAction(NotifyGameControllerDeadDead);
     }
 
-    private void OnRespawn()
-    {
-        m_Dead = false;
-        m_BossAnimator.Idle();
-    }
-
     private void NotifyGameControllerDeadDead()
     {
         if (GameController.TryGetInstance(out GameController gameController)) {
-            gameController.NotifyPlayerWasDefeated();
+            gameController.NotifyBossWasDefeated();
         }
     }
 
@@ -113,20 +110,6 @@ public class BossRenderer : MonoBehaviour
     {
         m_BossAnimator.Die(onDieAnimationComplete);
         m_CurrentTimer = Time.time;
-    }
-
-    private void OnJump()
-    {
-        m_BossAnimator.Jump();
-        m_CurrentTimer = Time.time;
-    }
-
-    private void OnPowerUp(Vector3 location)
-    {
-    }
-
-    private void OnDash()
-    {
     }
 
     #endregion

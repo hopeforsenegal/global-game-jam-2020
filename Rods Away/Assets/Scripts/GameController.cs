@@ -71,13 +71,6 @@ public class GameController : MonoBehaviour
         Debug.Assert(playerController != null, "playerController not set");
         Debug.Assert(bossController != null, "bossController not set");
         Debug.Assert(enemyControllers != null && enemyControllers.Length > 0, "enemyControllers not set");
-
-        bossController.DieEvent += OnBossDead;
-    }
-
-    protected void OnDestroy()
-    {
-        bossController.DieEvent -= OnBossDead;
     }
 
     protected void Update()
@@ -97,7 +90,7 @@ public class GameController : MonoBehaviour
         PlayerDefeatedEvent?.Invoke();
     }
 
-    public void OnBossDead()
+    public void NotifyBossWasDefeated()
     {
         Debug.LogFormat("You won!");
         BossDefeatedEvent?.Invoke();
