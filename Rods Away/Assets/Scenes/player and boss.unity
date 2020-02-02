@@ -1692,6 +1692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: af985783e13114aba80a618b75a59972, type: 2}
+  m_GameController: {fileID: 1252611489}
 --- !u!4 &1817450514
 Transform:
   m_ObjectHideFlags: 0
