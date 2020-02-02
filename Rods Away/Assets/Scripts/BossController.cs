@@ -29,7 +29,7 @@ public class BossController : MonoBehaviour
     #region Inspectables
 
     [SerializeField]
-    private int health = 6;
+    private int health = 100;
 
     [SerializeField]
     private float attackTimer = 3.0f;
@@ -39,6 +39,9 @@ public class BossController : MonoBehaviour
 
     [SerializeField]
     private BossHealthCollider m_BossHealthCollider = default;
+
+    [SerializeField]
+    private Health m_Health = default;
 
     [SerializeField]
     private EnemyMelee m_EnemyMelee = default;
@@ -123,12 +126,15 @@ public class BossController : MonoBehaviour
 
     private void OnHit()
     {
-        Debug.LogFormat("Boss Was hit when health was {0}", m_CurrentHealth);
-        m_CurrentHealth--;
+        //Debug.LogFormat("Boss Was hit when health was {0}", m_CurrentHealth);
+        m_CurrentHealth -= 10;
         if (m_CurrentHealth <= 0) {
             DieEvent?.Invoke();
         } else {
             HurtEvent?.Invoke();
+            Debug.Log("HurtEvent");
+            Health health = m_Health.GetComponent<Health>();
+            health.health = m_CurrentHealth;
         }
     }
 
