@@ -5762,26 +5762,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 830335332590647361, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 830335332590647361, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 830335332590647362, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 830335332590647366, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: m_GameController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 830335332590647372, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
         type: 3}
       propertyPath: m_Name
@@ -5797,26 +5777,6 @@ PrefabInstance:
       propertyPath: m_PlayerMelee
       value: 
       objectReference: {fileID: 160670401}
-    - target: {fileID: 830335332590647373, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: unlockDoubleJump
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 830335332590647373, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: unlockDash
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 830335332590647373, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: unlockShooting
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 830335332590647373, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba,
-        type: 3}
-      propertyPath: jumpVelocity
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78f2c4c2e1bad4d6b95acfc2fe03e3ba, type: 3}
 --- !u!1 &959104597
