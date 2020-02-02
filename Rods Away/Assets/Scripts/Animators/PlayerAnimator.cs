@@ -65,13 +65,13 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Jump()
     {
-        Debug.LogFormat("Jump");
+        //Debug.LogFormat("Jump");
         m_StandardAnimator.Play(string.Empty, "jump", "idle");
     }
 
     public void Melee()
     {
-        Debug.LogFormat("Melee");
+        //Debug.LogFormat("Melee");
         m_StandardAnimator.Play(string.Empty, "melee", "idle");
     }
 

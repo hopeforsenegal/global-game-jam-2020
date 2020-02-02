@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: af985783e13114aba80a618b75a59972, type: 2}
+  m_GameController: {fileID: 0}
 --- !u!4 &584952238
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuButton: {fileID: 1235842529}
-  exitButton: {fileID: 0}
+  exitButton: {fileID: 1888200359}
 --- !u!1 &1736860033
 GameObject:
   m_ObjectHideFlags: 0

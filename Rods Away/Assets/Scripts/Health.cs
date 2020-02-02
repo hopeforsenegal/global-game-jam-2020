@@ -14,7 +14,6 @@ public class Health : MonoBehaviour
         }
         set
         {
-            Debug.LogFormat("value:{0}", value);
             healthBar.value = value;
         }
     }

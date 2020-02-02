@@ -56,7 +56,7 @@ public class BossAnimator : MonoBehaviour
 
     public void Die(Action onDieAnimationComplete)
     {
-        Debug.LogFormat("Boss Die");
+        //Debug.LogFormat("Boss Die");
         m_StandardAnimator.Play(string.Empty, "die", string.Empty, ()=> {
             m_StandardAnimator.Clear();
             onDieAnimationComplete?.Invoke();
@@ -71,13 +71,13 @@ public class BossAnimator : MonoBehaviour
 
     public void Melee()
     {
-        Debug.LogFormat("Boss Melee");
+        //Debug.LogFormat("Boss Melee");
         m_StandardAnimator.Play(string.Empty, "blast", "idle");
     }
 
     public void Range()
     {
-        Debug.LogFormat("Boss Range");
+        //Debug.LogFormat("Boss Range");
         m_StandardAnimator.Play(string.Empty, "arms_shoot", "idle");
     }
 

@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnPowerUpHit(Vector3 location, PowerUpPiece.Ability ability)
     {
-        Debug.LogFormat("OnPowerUpHit:{0}", ability);
+        //Debug.LogFormat("OnPowerUpHit:{0}", ability);
         if (ability == PowerUpPiece.Ability.DoubleJump) {
             m_DoubleJumpCount++;
             if (m_DoubleJumpCount == 4) {

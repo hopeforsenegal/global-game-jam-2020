@@ -73,7 +73,7 @@ public class PlayerProjectile : MonoBehaviour
 
     public void Launch(Vector3 location, float speed, bool moveLeft)
     {
-        Debug.LogFormat("Launch");
+      //  Debug.LogFormat("Launch");
         Enabled = true;
         transform.position = location;
         this.speed = speed;

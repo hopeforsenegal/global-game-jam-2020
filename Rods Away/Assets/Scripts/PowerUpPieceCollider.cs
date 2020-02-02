@@ -52,7 +52,7 @@ public class PowerUpPieceCollider : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D tag:{0}", other.gameObject.tag);
+        //Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D tag:{0}", other.gameObject.tag);
 
         if (other.gameObject.CompareTag("Player")) {
             Debug.LogFormat("PowerUpPieceCollider OnTriggerEnter2D player");
