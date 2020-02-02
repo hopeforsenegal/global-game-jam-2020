@@ -648,7 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 339561464}
   - component: {fileID: 339561463}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player Projectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -1116,8 +1116,12 @@ GameObject:
   m_Component:
   - component: {fileID: 610610845}
   - component: {fileID: 610610846}
+<<<<<<< Updated upstream
   - component: {fileID: 610610847}
   m_Layer: 0
+=======
+  m_Layer: 11
+>>>>>>> Stashed changes
   m_Name: Collider
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -1338,7 +1342,7 @@ GameObject:
   - component: {fileID: 1188439816}
   - component: {fileID: 1188439815}
   - component: {fileID: 1188439820}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1550,7 +1554,7 @@ GameObject:
   - component: {fileID: 1294690907}
   - component: {fileID: 1294690906}
   - component: {fileID: 1294690905}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Melee Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2011,7 +2015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2038513255}
   - component: {fileID: 2038513254}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
