@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf43b975c5a4784b70392af1ea0b07, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  playerWonScreenMusicTrack: {fileID: 0}
+  mainMenuMusicTrack: {fileID: 0}
+  backgroundMusicTrack: {fileID: 8300000, guid: e60494c65fb694f3f84a56ebbe8cd468,
+    type: 3}
+  playerWallBlock: {fileID: 8300000, guid: d81100c8f19d04b0d90b52f35cbb7fd8, type: 3}
+  playerThroughWall: {fileID: 0}
+  playerAttackMelee: {fileID: 8300000, guid: 00a8808ba5f774cdc96ca7ae0bdfacbf, type: 3}
+  playerAttackProjectile: {fileID: 8300000, guid: 1620413723ac548a79c30fee6740217d,
+    type: 3}
+  playerPowerUp: {fileID: 8300000, guid: f13e7e073de9446158019b3915d47bdd, type: 3}
+  playerDash: {fileID: 8300000, guid: 3656a2d9cabac43a588ecec57cbc37f8, type: 3}
+  playerJump: {fileID: 8300000, guid: de77acc6fe4714cd9a5e67624992d380, type: 3}
+  playerMove: {fileID: 8300000, guid: 833561e30408e45ffa51fa7b4ee3c0f1, type: 3}
+  playerDie: {fileID: 8300000, guid: f5a65dc30f47d494ca305a03563684c7, type: 3}
+  playerRespawn: {fileID: 8300000, guid: eefcdada7afd54a839b0fb10b3435452, type: 3}
+  enemyAttackMelee: {fileID: 8300000, guid: c6527f79d31da46ce80f8a79beae6718, type: 3}
+  enemyAttackProjectile: {fileID: 8300000, guid: c6527f79d31da46ce80f8a79beae6718,
+    type: 3}
+  enemyHurt: {fileID: 8300000, guid: db127251da57847729977c5a8caf35cf, type: 3}
+  bossAttackMelee: {fileID: 0}
+  bossAttackProjectile: {fileID: 8300000, guid: c61084a61a87e48f992450ddf65e55f6,
+    type: 3}
+  bossHurt: {fileID: 8300000, guid: e8b96672543884aa0b910e4ffb34b627, type: 3}
+  bossLose: {fileID: 8300000, guid: eb2572b07455c40eb8ea8383c3bb5224, type: 3}
+  doubleJumpImage: {fileID: 21300000, guid: 564f1186b3b1243a49a3e0371732e557, type: 3}
+  dashJumpImage: {fileID: 21300000, guid: 66125ed6c45bd4cd7b6956be282eea85, type: 3}
+  shootJumpImage: {fileID: 21300000, guid: cba0d12d09eec469890319e9c985b5ed, type: 3}

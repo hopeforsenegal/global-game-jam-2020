@@ -1,15 +1,38 @@
 ﻿
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class GameController : MonoBehaviour
 {
+    #region Singleton
+
+    public static GameController Instance
+    {
+        get;
+        private set;
+    }
+
+    public static bool TryGetInstance(out GameController controller)
+    {
+        controller = Instance;
+        return controller != null;
+    }
+
+    #endregion
+
     #region Enums and Constants
 
     #endregion
 
     #region Events
+
+    public Action InitializedEvent;
+    public Action PlayerDefeatedEvent;
+    public Action BossDefeatedEvent;
+    public Action QuitEvent;
 
     #endregion
 
@@ -19,10 +42,6 @@ public class GameController : MonoBehaviour
 
     #region Inspectables
 
-    public PlayerController playerController;
-    public BossController bossController;
-    public EnemyController[] enemyControllers;
-
     #endregion
 
     #region Private Member Variables
@@ -31,26 +50,25 @@ public class GameController : MonoBehaviour
 
     #region Monobehaviours
 
-    protected void Start()
+    protected void Awake()
     {
-        Debug.Assert(playerController != null, "playerController not set");
-        Debug.Assert(bossController != null, "bossController not set");
-        Debug.Assert(enemyControllers != null && enemyControllers.Length > 0, "enemyControllers not set");
-
-        playerController.OnDead += OnDeadPlayer;
-        bossController.OnDead += OnDeadBoss;
+        if (Instance == null) {
+            Instance = this;
+        } else if (Instance != this) {
+            Destroy(gameObject);
+            return;
+        }
     }
 
-    protected void OnDestroy()
+    protected void Start()
     {
-        playerController.OnDead -= OnDeadPlayer;
-        bossController.OnDead -= OnDeadBoss;
+        StartCoroutine(Initialize());
     }
 
     protected void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            SceneManager.LoadScene("_main_menu");
+            QuitGame();
         }
     }
 
@@ -58,20 +76,39 @@ public class GameController : MonoBehaviour
 
     #region Public Methods
 
+    public void NotifyPlayerWasDefeated()
+    {
+        Debug.LogFormat("You died!");
+        PlayerDefeatedEvent?.Invoke();
+    }
+
+    public void NotifyBossWasDefeated()
+    {
+        Debug.LogFormat("You won!");
+        BossDefeatedEvent?.Invoke();
+        StartCoroutine(LoadSceneDelayed(5, "_credits"));
+    }
+
     #endregion
 
     #region Private Methods
 
-    private void OnDeadBoss()
+    private IEnumerator Initialize()
     {
-        Debug.LogFormat("You won!");
-        SceneManager.LoadScene("_credits");
+        yield return new WaitForSeconds(0.01f);
+        InitializedEvent?.Invoke();
     }
 
-    private void OnDeadPlayer()
+    private void QuitGame()
     {
-        Debug.LogFormat("You died!");
-        SceneManager.LoadScene("_credits");
+        QuitEvent?.Invoke();
+        SceneManager.LoadScene("_main_menu");
+    }
+
+    private IEnumerator LoadSceneDelayed(int delayed, string scenename)
+    {
+        yield return new WaitForSeconds(delayed);
+        SceneManager.LoadScene(scenename);
     }
 
     #endregion

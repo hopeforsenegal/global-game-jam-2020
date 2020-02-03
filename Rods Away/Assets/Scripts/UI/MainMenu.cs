@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     #region Inspectables
 
+    public Settings settings;
     public Button playButton;
     public Button exitButton;
 
@@ -35,6 +36,11 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Assert(playButton != null, "playButton not set");
         Debug.Assert(exitButton != null, "exitButton not set");
+        Debug.Assert(settings != null, "settings not set");
+
+        if (AudioPlayer.TryGetInstance(out AudioPlayer audioPlayer)) {
+            audioPlayer.PlayMusic(settings.mainMenuMusicTrack);
+        }
 
         playButton.onClick.AddListener(PlayGame);
         exitButton.onClick.AddListener(ExitGame);
